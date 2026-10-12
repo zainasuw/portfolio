@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" data-theme="graphite">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zainab Stanikzy</title>
+  <meta name="description" content="Zainab Stanikzy. Computer science at UW Tacoma. Games and full-stack apps.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="shell">
+
+    <header class="side">
+      <div>
+        <h1 class="side__name">Zainab Stanikzy</h1>
+        <p class="side__role">Computer Science, UW Tacoma</p>
+        <!-- TAGLINE: one line about what you build. -->
+        <p class="side__tagline">I build games and full-stack apps, from the engine up to the screen.</p>
+
+        <nav class="side__nav" aria-label="Sections">
+          <a href="#about" class="is-active"><span class="side__line"></span>About</a>
+          <a href="#coursework"><span class="side__line"></span>TCSS 490</a>
+          <a href="#projects"><span class="side__line"></span>Projects</a>
+        </nav>
+      </div>
+
+      <p class="side__links">
+        <a href="https://github.com/zainasuw">GitHub <span aria-hidden="true">↗</span></a>
+      </p>
+    </header>
+
+    <main class="content">
+
+      <!-- ABOUT: edit these paragraphs to say what you want about yourself. -->
+      <section id="about" class="section">
+        <h2 class="section__label">About</h2>
+        <div class="prose">
+          <p>
+            I'm a computer science student at the University of Washington
+            Tacoma. Most of what I've built so far is games: a Tetris clone
+            with a team of four, a 3D dungeon crawler, and a dating sim made
+            over a game jam weekend.
+          </p>
+          <p>
+            Lately I've been working further up the stack, on a mobile app
+            with a Node backend that pulls live campus data. I like projects
+            where I own the whole thing, from the data model to what the
+            player or user sees.
+          </p>
+        </div>
+      </section>
+
+      <section id="coursework" class="section">
+        <div class="section__head">
+          <h2 class="section__label">TCSS 490 · Generative AI and Software Development</h2>
+          <p class="section__meta" id="count"></p>
+        </div>
+        <!-- One segment per artifact. Filled once it ships. Drawn by main.js. -->
+        <div class="meter" id="meter" aria-hidden="true"></div>
+        <p class="section__note">
+          Five artifacts over Autumn 2026. Each one gets its card here when it ships.
+        </p>
+
+        <!-- The five cards. Their content lives in cards.js. -->
+        <div class="stack" id="cards">
+          <noscript>The artifact cards need JavaScript to show.</noscript>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="section__head">
+          <h2 class="section__label">Projects</h2>
+          <p class="section__meta">Before this course</p>
+        </div>
+
+        <div class="stack">
+          <article class="card">
+            <div class="card__top">
+              <h3 class="card__title">HuskyHub</h3>
+              <span class="card__aside">Private repository</span>
+            </div>
+            <p class="card__text">
+              A "what's open right now" app for UW students. Shows live study
+              room availability, dining hours, bus arrivals and weather from
+              public data, with no login.
+            </p>
+            <ul class="tags">
+              <li>React Native</li><li>Expo</li><li>Node.js</li><li>Express</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card__top">
+              <h3 class="card__title">
+                <a href="https://la-petite-baleine.github.io/TriCampusJam2026/">It's a Feature, Not a Bug <span aria-hidden="true">↗</span></a>
+              </h3>
+              <a class="card__aside" href="https://github.com/zainasuw/TriCampusJam2026">Code</a>
+            </div>
+            <p class="card__text">
+              A dating sim built in a weekend for the UW Tri-Campus Game Jam
+              2026 with a team of three. I programmed, designed, and made one
+              of the character sprites.
+            </p>
+            <ul class="tags">
+              <li>JavaScript</li><li>HTML Canvas</li><li>Game jam</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card__top">
+              <h3 class="card__title">
+                <a href="https://github.com/zainasuw/dungeon-adventure-game">Dungeon Adventure <span aria-hidden="true">↗</span></a>
+              </h3>
+            </div>
+            <p class="card__text">
+              A 3D dungeon crawler with hero selection, dynamic combat and
+              saved runs. MVC architecture with polymorphic hero and enemy
+              systems.
+            </p>
+            <ul class="tags">
+              <li>Java</li><li>JavaFX</li><li>jMonkeyEngine</li><li>SQLite</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card__top">
+              <h3 class="card__title">
+                <a href="https://github.com/zainasuw/group3-tetris">Tetris <span aria-hidden="true">↗</span></a>
+              </h3>
+            </div>
+            <p class="card__text">
+              Tetris with custom themes, animated effects and multiplayer
+              scoring. Built by a team of four using Agile sprints and Git.
+            </p>
+            <ul class="tags">
+              <li>Java</li><li>Swing</li><li>JavaFX</li><li>Team of 4</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <footer class="foot">
+        <p>Plain HTML, CSS and JavaScript, hosted on GitHub Pages.</p>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- Theme switch -->
+  <div class="themes" role="group" aria-label="Theme">
+    <button type="button" data-set-theme="graphite">Graphite</button>
+    <button type="button" data-set-theme="navy">Navy</button>
+    <button type="button" data-set-theme="light">Light</button>
+  </div>
+
+  <script src="cards.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
