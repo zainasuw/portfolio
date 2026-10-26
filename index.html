@@ -1,163 +1,189 @@
 <!doctype html>
-<html lang="en" data-theme="graphite">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Zainab Stanikzy</title>
-  <meta name="description" content="Zainab Stanikzy. Computer science at UW Tacoma. Games and full-stack apps.">
+  <meta name="description" content="Zainab Stanikzy, computer science at UW Tacoma. Games and full-stack apps.">
+  <meta name="color-scheme" content="dark">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <div class="shell">
+  <header class="top">
+    <div class="wrap top__inner">
+      <a class="brand" href="#projects">
+        <span class="brand__name">Zainab Stanikzy</span>
+        <span class="brand__role">// Computer science · UW Tacoma</span>
+      </a>
+      <button class="menu" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="nav" aria-label="Sections">
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/zainasuw" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
 
-    <header class="side">
-      <div>
-        <h1 class="side__name">Zainab Stanikzy</h1>
-        <p class="side__role">Computer Science, UW Tacoma</p>
-        <!-- TAGLINE: one line about what you build. -->
-        <p class="side__tagline">I build games and full-stack apps, from the engine up to the screen.</p>
+  <main>
 
-        <nav class="side__nav" aria-label="Sections">
-          <a href="#about" class="is-active"><span class="side__line"></span>About</a>
-          <a href="#coursework"><span class="side__line"></span>TCSS 490</a>
-          <a href="#projects"><span class="side__line"></span>Projects</a>
-        </nav>
+    <section id="projects" class="section section--first">
+      <div class="wrap">
+        <h2 class="label">// Projects</h2>
+
+        <article class="card card--wide">
+          <div class="card__media">
+            <img src="images/dungeon-adventure.jpg" alt="A torch-lit stone dungeon corridor" width="1280" height="714">
+          </div>
+          <div class="card__body">
+            <h3 class="card__title">Dungeon Adventure</h3>
+            <p class="card__text">A 3D dungeon crawler with hero selection, dynamic combat and saved runs, built on an MVC architecture.</p>
+            <ul class="tags"><li>Java</li><li>JavaFX</li><li>jMonkeyEngine</li><li>SQLite</li></ul>
+            <p class="links">
+              <a href="https://github.com/zainasuw/dungeon-adventure-game" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+            </p>
+          </div>
+        </article>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card__media card__media--browser">
+              <div class="window"><div class="window__bar"><i></i><i></i><i></i></div>
+                <img src="images/uxaudit.jpg" alt="The UXAudit start screen with a website address field" width="1280" height="800" loading="lazy">
+              </div>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">UXAudit</h3>
+              <p class="card__text">Paste any public web address and get desktop and phone screenshots, measured checks and an AI design critique.</p>
+              <ul class="tags"><li>TypeScript</li><li>Node.js</li><li>Playwright</li><li>Gemini API</li></ul>
+              <p class="links">
+                <a href="https://cvdvnu-uxaudit.hf.space" target="_blank" rel="noopener">Live site <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/zainasuw/uxaudit" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__media card__media--browser">
+              <div class="window"><div class="window__bar"><i></i><i></i><i></i></div>
+                <img src="images/its-a-feature-not-a-bug.jpg" alt="Title screen of the game: Dating Simulator! It's a Romance, Not a Bug" width="1280" height="719" loading="lazy">
+              </div>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">It’s a Feature, Not a Bug</h3>
+              <p class="card__text">A dating sim built in one weekend for the UW Tri-Campus Game Jam 2026 with a team of three.</p>
+              <ul class="tags"><li>JavaScript</li><li>HTML Canvas</li><li>Game jam</li></ul>
+              <p class="links">
+                <a href="https://la-petite-baleine.github.io/TriCampusJam2026/" target="_blank" rel="noopener">Play demo <span aria-hidden="true">↗</span></a>
+                <a href="https://github.com/zainasuw/TriCampusJam2026" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__media">
+              <img src="images/tetris.jpg" alt="A neon Tetris board with falling blocks" width="1280" height="714" loading="lazy">
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Tetris</h3>
+              <p class="card__text">Tetris with custom themes, animated effects and multiplayer scoring, built by a team of four in Agile sprints.</p>
+              <ul class="tags"><li>Java</li><li>Swing</li><li>JavaFX</li><li>Team of 4</li></ul>
+              <p class="links">
+                <a href="https://github.com/zainasuw/group3-tetris" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__media">
+              <img src="images/huskyhub.jpg" alt="Two phones showing a dark campus status app" width="1280" height="714" loading="lazy">
+            </div>
+            <div class="card__body">
+              <div class="card__head">
+                <h3 class="card__title">HuskyHub</h3>
+                <span class="badge">In development</span>
+              </div>
+              <p class="card__text">A “what’s open right now” app for UW students: study rooms, dining hours, bus arrivals and weather, with no login.</p>
+              <ul class="tags"><li>React Native</li><li>Expo</li><li>Node.js</li><li>Express</li></ul>
+              <p class="links"><span class="links__note">Private repository</span></p>
+            </div>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <p class="side__links">
-        <a href="https://github.com/zainasuw">GitHub <span aria-hidden="true">↗</span></a>
-      </p>
-    </header>
+    <section id="architecture" class="section">
+      <div class="wrap">
+        <h2 class="label">// Architecture</h2>
+        <div class="split">
+          <div class="split__notes">
+            <h3 class="title">Dungeon Adventure: core systems</h3>
+            <p>Model–view–controller on jMonkeyEngine. The controller is a jME app state that drives input and the game loop; the view listens for model changes and redraws the scene.</p>
+            <p>Heroes and monsters share an abstract DungeonCharacter. Factories build rooms and monsters, and save files and monster stats live in SQLite.</p>
+            <p class="links"><a href="https://github.com/zainasuw/dungeon-adventure-game" target="_blank" rel="noopener">View source <span aria-hidden="true">↗</span></a></p>
+          </div>
+          <figure class="diagram" aria-label="Architecture diagram of Dungeon Adventure">
+            <div class="diagram__row diagram__row--mvc">
+              <div class="box"><strong>Controller</strong><span>jME BaseAppState</span><span>input · game loop</span></div>
+              <div class="arrow"><span>updates</span><b class="arrow--h">──▶</b><b class="arrow--v">▼</b></div>
+              <div class="box"><strong>GameModel</strong><span>RoomMap · roomFactory</span><span>PlayerInventory · Pillar</span></div>
+              <div class="arrow"><span>events</span><b class="arrow--h">──▶</b><b class="arrow--v">▼</b></div>
+              <div class="box"><strong>View</strong><span>PropertyChangeListener</span><span>inventory · pause GUI</span></div>
+            </div>
+            <p class="diagram__note">▼ the model owns</p>
+            <div class="diagram__row diagram__row--model">
+              <div class="box"><strong>Characters</strong><span>DungeonCharacter (abstract)</span><span>Hero → Warrior · Scout · Doctor</span><span>Monster → Gremlin · Ogre · Skeleton</span></div>
+              <div class="box"><strong>Persistence</strong><span>SaveLoadManager → SQLite</span><span>SaveData (serialized)</span><span>MonsterDatabase → SQLite</span></div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
 
-    <main class="content">
+    <section id="about" class="section">
+      <div class="wrap">
+        <h2 class="label">// About</h2>
+        <div class="split">
+          <p class="lead">I’m a computer science student at the University of Washington Tacoma.</p>
+          <div class="skills">
+            <div class="skills__group"><h3>Languages</h3><ul class="tags"><li>Java</li><li>JavaScript</li><li>TypeScript</li><li>HTML &amp; CSS</li></ul></div>
+            <div class="skills__group"><h3>Games</h3><ul class="tags"><li>JavaFX</li><li>jMonkeyEngine</li><li>HTML Canvas</li><li>Swing</li></ul></div>
+            <div class="skills__group"><h3>Web &amp; mobile</h3><ul class="tags"><li>Node.js</li><li>Express</li><li>React Native</li><li>Expo</li><li>Playwright</li></ul></div>
+            <div class="skills__group"><h3>Tools &amp; practice</h3><ul class="tags"><li>Git</li><li>Agile sprints</li><li>MVC</li><li>SQLite</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <!-- ABOUT: edit these paragraphs to say what you want about yourself. -->
-      <section id="about" class="section">
-        <h2 class="section__label">About</h2>
-        <div class="prose">
-          <p>
-            I'm a computer science student at the University of Washington
-            Tacoma. Most of what I've built so far is games: a Tetris clone
-            with a team of four, a 3D dungeon crawler, and a dating sim made
-            over a game jam weekend.
+    <section id="contact" class="section">
+      <div class="wrap">
+        <h2 class="label">// Contact</h2>
+        <div class="contact">
+          <h3 class="title">Let’s build something.</h3>
+          <p>Open to internships, research and collaborations. The quickest way to reach me is email; my code lives on GitHub.</p>
+          <p class="actions">
+            <a class="button button--primary" href="mailto:zainas@uw.edu">Email me <span aria-hidden="true">→</span></a>
+            <a class="button button--ghost" href="https://github.com/zainasuw" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
           </p>
-          <p>
-            Lately I've been working further up the stack, on a mobile app
-            with a Node backend that pulls live campus data. I like projects
-            where I own the whole thing, from the data model to what the
-            player or user sees.
-          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="coursework" class="section">
-        <div class="section__head">
-          <h2 class="section__label">TCSS 490 · Generative AI and Software Development</h2>
-          <p class="section__meta" id="count"></p>
-        </div>
-        <!-- One segment per artifact. Filled once it ships. Drawn by main.js. -->
-        <div class="meter" id="meter" aria-hidden="true"></div>
-        <p class="section__note">
-          Five artifacts over Autumn 2026. Each one gets its card here when it ships.
-        </p>
+  </main>
 
-        <!-- The five cards. Their content lives in cards.js. -->
-        <div class="stack" id="cards">
-          <noscript>The artifact cards need JavaScript to show.</noscript>
-        </div>
-      </section>
+  <footer class="foot">
+    <div class="wrap foot__inner">
+      <p>© 2026 Zainab Stanikzy</p>
+      <p>HTML · CSS · JavaScript · GitHub Pages</p>
+    </div>
+  </footer>
 
-      <section id="projects" class="section">
-        <div class="section__head">
-          <h2 class="section__label">Projects</h2>
-          <p class="section__meta">Before this course</p>
-        </div>
-
-        <div class="stack">
-          <article class="card">
-            <div class="card__top">
-              <h3 class="card__title">HuskyHub</h3>
-              <span class="card__aside">Private repository</span>
-            </div>
-            <p class="card__text">
-              A "what's open right now" app for UW students. Shows live study
-              room availability, dining hours, bus arrivals and weather from
-              public data, with no login.
-            </p>
-            <ul class="tags">
-              <li>React Native</li><li>Expo</li><li>Node.js</li><li>Express</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="card__top">
-              <h3 class="card__title">
-                <a href="https://la-petite-baleine.github.io/TriCampusJam2026/">It's a Feature, Not a Bug <span aria-hidden="true">↗</span></a>
-              </h3>
-              <a class="card__aside" href="https://github.com/zainasuw/TriCampusJam2026">Code</a>
-            </div>
-            <p class="card__text">
-              A dating sim built in a weekend for the UW Tri-Campus Game Jam
-              2026 with a team of three. I programmed, designed, and made one
-              of the character sprites.
-            </p>
-            <ul class="tags">
-              <li>JavaScript</li><li>HTML Canvas</li><li>Game jam</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="card__top">
-              <h3 class="card__title">
-                <a href="https://github.com/zainasuw/dungeon-adventure-game">Dungeon Adventure <span aria-hidden="true">↗</span></a>
-              </h3>
-            </div>
-            <p class="card__text">
-              A 3D dungeon crawler with hero selection, dynamic combat and
-              saved runs. MVC architecture with polymorphic hero and enemy
-              systems.
-            </p>
-            <ul class="tags">
-              <li>Java</li><li>JavaFX</li><li>jMonkeyEngine</li><li>SQLite</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="card__top">
-              <h3 class="card__title">
-                <a href="https://github.com/zainasuw/group3-tetris">Tetris <span aria-hidden="true">↗</span></a>
-              </h3>
-            </div>
-            <p class="card__text">
-              Tetris with custom themes, animated effects and multiplayer
-              scoring. Built by a team of four using Agile sprints and Git.
-            </p>
-            <ul class="tags">
-              <li>Java</li><li>Swing</li><li>JavaFX</li><li>Team of 4</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <footer class="foot">
-        <p>Plain HTML, CSS and JavaScript, hosted on GitHub Pages.</p>
-      </footer>
-
-    </main>
-  </div>
-
-  <!-- Theme switch -->
-  <div class="themes" role="group" aria-label="Theme">
-    <button type="button" data-set-theme="graphite">Graphite</button>
-    <button type="button" data-set-theme="navy">Navy</button>
-    <button type="button" data-set-theme="light">Light</button>
-  </div>
-
-  <script src="cards.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
