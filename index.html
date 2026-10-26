@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Zainab Stanikzy</title>
-  <meta name="description" content="Zainab Stanikzy, computer science at UW Tacoma. Games and full-stack apps.">
+  <meta name="description" content="Zainab Stanikzy, computer science at UW Tacoma. Games, full-stack apps and AI-powered tools.">
   <meta name="color-scheme" content="dark">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,16 +15,13 @@
 
   <header class="top">
     <div class="wrap top__inner">
-      <a class="brand" href="#projects">
-        <span class="brand__name">Zainab Stanikzy</span>
-        <span class="brand__role">// Computer science · UW Tacoma</span>
-      </a>
+      <a class="brand" href="#intro">Zainab Stanikzy</a>
       <button class="menu" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
       <nav class="nav" id="nav" aria-label="Sections">
         <a href="#projects">Projects</a>
-        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
         <a href="https://github.com/zainasuw" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
       </nav>
@@ -33,9 +30,30 @@
 
   <main>
 
+    <section id="intro" class="hero">
+      <div class="wrap">
+        <h1 class="hero__name">Zainab Stanikzy</h1>
+        <p class="hero__role">Computer science student at the University of Washington Tacoma.</p>
+        <p class="hero__pitch">I build things.</p>
+        <p class="actions">
+          <a class="button button--primary" href="#projects">View projects <span class="button__icon button__icon--down" aria-hidden="true">↓</span></a>
+          <a class="button button--ghost" href="https://www.linkedin.com/in/zainabstanikzy/" target="_blank" rel="noopener">LinkedIn <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
+          <a class="button button--ghost" href="https://github.com/zainasuw" target="_blank" rel="noopener">GitHub <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
+        </p>
+      </div>
+    </section>
+
     <section id="projects" class="section section--first">
       <div class="wrap">
-        <h2 class="label">// Projects</h2>
+        <div class="section__head">
+          <h2 class="label" id="projects-title" tabindex="-1">// Projects</h2>
+          <p class="hint">Select a tag to filter</p>
+        </div>
+
+        <div class="filter" id="filter" hidden>
+          <p aria-live="polite">Showing <span id="filter-count"></span> using <strong id="filter-name"></strong></p>
+          <button class="button button--sm button--ghost" type="button" id="filter-clear">Clear filter <span aria-hidden="true">✕</span></button>
+        </div>
 
         <article class="card card--wide">
           <div class="card__media">
@@ -44,10 +62,16 @@
           <div class="card__body">
             <h3 class="card__title">Dungeon Adventure</h3>
             <p class="card__text">A 3D dungeon crawler with hero selection, dynamic combat and saved runs, built on an MVC architecture.</p>
-            <ul class="tags"><li>Java</li><li>JavaFX</li><li>jMonkeyEngine</li><li>SQLite</li></ul>
-            <p class="links">
-              <a href="https://github.com/zainasuw/dungeon-adventure-game" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
-            </p>
+            <ul class="tags">
+              <li><button class="tag" type="button" data-tag="Java">Java</button></li>
+              <li><button class="tag" type="button" data-tag="JavaFX">JavaFX</button></li>
+              <li><button class="tag" type="button" data-tag="jMonkeyEngine">jMonkeyEngine</button></li>
+              <li><button class="tag" type="button" data-tag="SQLite">SQLite</button></li>
+            </ul>
+            <div class="card__actions">
+              <button class="button button--sm button--primary" type="button" data-open-dialog="architecture">System architecture <span class="button__icon button__icon--right" aria-hidden="true">→</span></button>
+              <a class="button button--sm button--ghost" href="https://github.com/zainasuw/dungeon-adventure-game" target="_blank" rel="noopener">GitHub <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
+            </div>
           </div>
         </article>
 
@@ -61,11 +85,16 @@
             <div class="card__body">
               <h3 class="card__title">UXAudit</h3>
               <p class="card__text">Paste any public web address and get desktop and phone screenshots, measured checks and an AI design critique.</p>
-              <ul class="tags"><li>TypeScript</li><li>Node.js</li><li>Playwright</li><li>Gemini API</li></ul>
-              <p class="links">
-                <a href="https://cvdvnu-uxaudit.hf.space" target="_blank" rel="noopener">Live site <span aria-hidden="true">↗</span></a>
-                <a href="https://github.com/zainasuw/uxaudit" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
-              </p>
+              <ul class="tags">
+                <li><button class="tag" type="button" data-tag="TypeScript">TypeScript</button></li>
+                <li><button class="tag" type="button" data-tag="Node.js">Node.js</button></li>
+                <li><button class="tag" type="button" data-tag="Playwright">Playwright</button></li>
+                <li><button class="tag" type="button" data-tag="Gemini API">Gemini API</button></li>
+              </ul>
+              <div class="card__actions">
+                <a class="button button--sm button--primary" href="https://cvdvnu-uxaudit.hf.space" target="_blank" rel="noopener">Live site <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
+                <a class="button button--sm button--ghost" href="https://github.com/zainasuw/uxaudit" target="_blank" rel="noopener">GitHub <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
+              </div>
             </div>
           </article>
 
@@ -78,11 +107,15 @@
             <div class="card__body">
               <h3 class="card__title">It’s a Feature, Not a Bug</h3>
               <p class="card__text">A dating sim built in one weekend for the UW Tri-Campus Game Jam 2026 with a team of three.</p>
-              <ul class="tags"><li>JavaScript</li><li>HTML Canvas</li><li>Game jam</li></ul>
-              <p class="links">
-                <a href="https://la-petite-baleine.github.io/TriCampusJam2026/" target="_blank" rel="noopener">Play demo <span aria-hidden="true">↗</span></a>
-                <a href="https://github.com/zainasuw/TriCampusJam2026" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
-              </p>
+              <ul class="tags">
+                <li><button class="tag" type="button" data-tag="JavaScript">JavaScript</button></li>
+                <li><button class="tag" type="button" data-tag="HTML Canvas">HTML Canvas</button></li>
+                <li><button class="tag" type="button" data-tag="Game jam">Game jam</button></li>
+              </ul>
+              <div class="card__actions">
+                <a class="button button--sm button--primary" href="https://la-petite-baleine.github.io/TriCampusJam2026/" target="_blank" rel="noopener">Play demo <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
+                <a class="button button--sm button--ghost" href="https://github.com/zainasuw/TriCampusJam2026" target="_blank" rel="noopener">GitHub <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
+              </div>
             </div>
           </article>
 
@@ -93,10 +126,15 @@
             <div class="card__body">
               <h3 class="card__title">Tetris</h3>
               <p class="card__text">Tetris with custom themes, animated effects and multiplayer scoring, built by a team of four in Agile sprints.</p>
-              <ul class="tags"><li>Java</li><li>Swing</li><li>JavaFX</li><li>Team of 4</li></ul>
-              <p class="links">
-                <a href="https://github.com/zainasuw/group3-tetris" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
-              </p>
+              <ul class="tags">
+                <li><button class="tag" type="button" data-tag="Java">Java</button></li>
+                <li><button class="tag" type="button" data-tag="Swing">Swing</button></li>
+                <li><button class="tag" type="button" data-tag="JavaFX">JavaFX</button></li>
+                <li><button class="tag" type="button" data-tag="Team of 4">Team of 4</button></li>
+              </ul>
+              <div class="card__actions">
+                <a class="button button--sm button--ghost" href="https://github.com/zainasuw/group3-tetris" target="_blank" rel="noopener">GitHub <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
+              </div>
             </div>
           </article>
 
@@ -110,56 +148,36 @@
                 <span class="badge">In development</span>
               </div>
               <p class="card__text">A “what’s open right now” app for UW students: study rooms, dining hours, bus arrivals and weather, with no login.</p>
-              <ul class="tags"><li>React Native</li><li>Expo</li><li>Node.js</li><li>Express</li></ul>
-              <p class="links"><span class="links__note">Private repository</span></p>
+              <ul class="tags">
+                <li><button class="tag" type="button" data-tag="React Native">React Native</button></li>
+                <li><button class="tag" type="button" data-tag="Expo">Expo</button></li>
+                <li><button class="tag" type="button" data-tag="Node.js">Node.js</button></li>
+                <li><button class="tag" type="button" data-tag="Express">Express</button></li>
+              </ul>
+              <details class="more">
+                <summary>Key features</summary>
+                <ul class="more__list">
+                  <li>Live study-room availability</li>
+                  <li>Dining hours, bus arrivals and weather in one place</li>
+                  <li>No login: everything comes from public data</li>
+                  <li>React Native app with a Node.js and Express backend that pulls live campus data</li>
+                </ul>
+                <p class="more__note">The code is private while the app is in development.</p>
+              </details>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="architecture" class="section">
+    <section id="skills" class="section">
       <div class="wrap">
-        <h2 class="label">// Architecture</h2>
-        <div class="split">
-          <div class="split__notes">
-            <h3 class="title">Dungeon Adventure: core systems</h3>
-            <dl class="facts">
-              <div><dt>Pattern</dt><dd>Model–view–controller on jMonkeyEngine. The controller is a jME app state that drives input and the game loop; the view listens for model changes and redraws the scene.</dd></div>
-              <div><dt>Characters</dt><dd>Heroes and monsters share an abstract DungeonCharacter. Factories build the rooms and monsters.</dd></div>
-              <div><dt>Persistence</dt><dd>Save files and monster stats live in SQLite.</dd></div>
-            </dl>
-            <p class="links"><a href="https://github.com/zainasuw/dungeon-adventure-game" target="_blank" rel="noopener">View source <span aria-hidden="true">↗</span></a></p>
-          </div>
-          <figure class="diagram" aria-label="Architecture diagram of Dungeon Adventure">
-            <div class="diagram__row diagram__row--mvc">
-              <div class="box"><span class="box__name">Controller</span><span>jME BaseAppState</span><span>input · game loop</span></div>
-              <div class="arrow"><span>updates</span><b class="arrow--h">──▶</b><b class="arrow--v">▼</b></div>
-              <div class="box"><span class="box__name">GameModel</span><span>RoomMap · roomFactory</span><span>PlayerInventory · Pillar</span></div>
-              <div class="arrow"><span>events</span><b class="arrow--h">──▶</b><b class="arrow--v">▼</b></div>
-              <div class="box"><span class="box__name">View</span><span>property-change listener</span><span>inventory · pause GUI</span></div>
-            </div>
-            <p class="diagram__note">▼ the model owns</p>
-            <div class="diagram__row diagram__row--model">
-              <div class="box"><span class="box__name">Characters</span><span>DungeonCharacter (abstract)</span><span>Hero → Warrior · Scout · Doctor</span><span>Monster → Gremlin · Ogre · Skeleton</span></div>
-              <div class="box"><span class="box__name">Persistence</span><span>SaveLoadManager → SQLite</span><span>SaveData (serialized)</span><span>MonsterDatabase → SQLite</span></div>
-            </div>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="wrap">
-        <h2 class="label">// About</h2>
-        <div class="split">
-          <p class="lead">I’m a computer science student at the University of Washington Tacoma.</p>
-          <div class="skills">
-            <div class="skills__group"><h3>Languages</h3><ul class="tags"><li>Java</li><li>JavaScript</li><li>TypeScript</li><li>HTML &amp; CSS</li></ul></div>
-            <div class="skills__group"><h3>Games</h3><ul class="tags"><li>JavaFX</li><li>jMonkeyEngine</li><li>HTML Canvas</li><li>Swing</li></ul></div>
-            <div class="skills__group"><h3>Web &amp; mobile</h3><ul class="tags"><li>Node.js</li><li>Express</li><li>React Native</li><li>Expo</li><li>Playwright</li></ul></div>
-            <div class="skills__group"><h3>Tools &amp; practice</h3><ul class="tags"><li>Git</li><li>Agile sprints</li><li>MVC</li><li>SQLite</li></ul></div>
-          </div>
+        <h2 class="label">// Skills</h2>
+        <div class="skills">
+          <div class="skills__group"><h3>Languages</h3><ul class="skill-list"><li>Java</li><li>JavaScript</li><li>TypeScript</li><li>HTML &amp; CSS</li></ul></div>
+          <div class="skills__group"><h3>Games</h3><ul class="skill-list"><li>JavaFX</li><li>jMonkeyEngine</li><li>HTML Canvas</li><li>Swing</li></ul></div>
+          <div class="skills__group"><h3>Web &amp; mobile</h3><ul class="skill-list"><li>Node.js</li><li>Express</li><li>React Native</li><li>Expo</li><li>Playwright</li></ul></div>
+          <div class="skills__group"><h3>Tools &amp; practice</h3><ul class="skill-list"><li>Git</li><li>Agile sprints</li><li>MVC</li><li>SQLite</li></ul></div>
         </div>
       </div>
     </section>
@@ -171,13 +189,47 @@
           <h3 class="title">Let’s build something together.</h3>
           <p>Connect with me on LinkedIn.</p>
           <p class="actions">
-            <a class="button button--primary" href="https://www.linkedin.com/in/zainabstanikzy/" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
+            <a class="button button--primary" href="https://www.linkedin.com/in/zainabstanikzy/" target="_blank" rel="noopener">LinkedIn <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
           </p>
         </div>
       </div>
     </section>
 
   </main>
+
+  <dialog class="dialog" id="architecture" aria-labelledby="architecture-title">
+    <div class="dialog__head">
+      <div>
+        <p class="label">// System architecture</p>
+        <h2 class="title" id="architecture-title">Dungeon Adventure: core systems</h2>
+      </div>
+      <button class="dialog__close" type="button" aria-label="Close" autofocus>✕</button>
+    </div>
+    <div class="dialog__body">
+      <dl class="facts">
+        <div><dt>Pattern</dt><dd>Model–view–controller on jMonkeyEngine. The controller is a jME app state that drives input and the game loop; the view listens for model changes and redraws the scene.</dd></div>
+        <div><dt>Characters</dt><dd>Heroes and monsters share an abstract DungeonCharacter. Factories build the rooms and monsters.</dd></div>
+        <div><dt>Persistence</dt><dd>Save files and monster stats live in SQLite.</dd></div>
+      </dl>
+      <figure class="diagram" aria-label="Architecture diagram of Dungeon Adventure">
+        <div class="diagram__row diagram__row--mvc">
+          <div class="box"><span class="box__name">Controller</span><span>jME BaseAppState</span><span>input · game loop</span></div>
+          <div class="arrow"><span>updates</span><b class="arrow--h">──▶</b><b class="arrow--v">▼</b></div>
+          <div class="box"><span class="box__name">GameModel</span><span>RoomMap · roomFactory</span><span>PlayerInventory · Pillar</span></div>
+          <div class="arrow"><span>events</span><b class="arrow--h">──▶</b><b class="arrow--v">▼</b></div>
+          <div class="box"><span class="box__name">View</span><span>property-change listener</span><span>inventory · pause GUI</span></div>
+        </div>
+        <p class="diagram__note">▼ the model owns</p>
+        <div class="diagram__row diagram__row--model">
+          <div class="box"><span class="box__name">Characters</span><span>DungeonCharacter (abstract)</span><span>Hero → Warrior · Scout · Doctor</span><span>Monster → Gremlin · Ogre · Skeleton</span></div>
+          <div class="box"><span class="box__name">Persistence</span><span>SaveLoadManager → SQLite</span><span>SaveData (serialized)</span><span>MonsterDatabase → SQLite</span></div>
+        </div>
+      </figure>
+      <p class="actions">
+        <a class="button button--sm button--ghost" href="https://github.com/zainasuw/dungeon-adventure-game" target="_blank" rel="noopener">View source <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
+      </p>
+    </div>
+  </dialog>
 
   <footer class="foot">
     <div class="wrap foot__inner">
