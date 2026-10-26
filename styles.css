@@ -26,8 +26,8 @@ body {
   background: var(--bg);
   color: var(--body);
   font-family: var(--mono);
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 15px;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -49,14 +49,14 @@ img { display: block; max-width: 100%; height: auto; }
   border-bottom: 1px solid var(--border);
 }
 .top__inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 64px; }
-.brand { display: flex; gap: 14px; text-decoration: none; font-size: 14px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+.brand { display: flex; gap: 14px; text-decoration: none; font-size: 15px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
 .brand__name { color: var(--text); }
 .brand__role { color: var(--muted); }
 .nav { display: flex; gap: 28px; }
 .nav a {
   color: var(--body);
   text-decoration: none;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.8px;
   text-transform: uppercase;
   text-underline-offset: 4px;
@@ -69,17 +69,17 @@ img { display: block; max-width: 100%; height: auto; }
 .section { padding: 120px 0 0; }
 .section--first { padding-top: 72px; }
 .label {
-  margin-bottom: 28px;
-  font-size: 12px;
+  margin-bottom: 40px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 1.2px;
   text-transform: uppercase;
   color: var(--muted);
 }
 .title {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 500;
-  line-height: 36px;
+  line-height: 40px;
   letter-spacing: 0.4px;
   text-transform: uppercase;
   color: var(--text);
@@ -117,15 +117,15 @@ img { display: block; max-width: 100%; height: auto; }
 
 .card__body { display: flex; flex-direction: column; gap: 14px; flex: 1; padding: 24px; }
 .card__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.card__title { font-size: 15px; font-weight: 500; line-height: 22px; letter-spacing: 0.3px; text-transform: uppercase; color: var(--text); }
+.card__title { font-size: 18px; font-weight: 500; line-height: 26px; letter-spacing: 0.3px; text-transform: uppercase; color: var(--text); }
 .card__text { color: var(--body); }
-.card .tags { margin-top: auto; }
+.grid .card .tags { margin-top: auto; }
 
 .card--wide { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
 .card--wide .card__media { aspect-ratio: auto; min-height: 100%; border-bottom: 0; border-right: 1px solid var(--border); }
 .card--wide .card__media img { position: absolute; inset: 0; }
-.card--wide .card__body { padding: 32px; }
-.card--wide .card__title { font-size: 28px; line-height: 36px; }
+.card--wide .card__body { padding: 40px; justify-content: center; gap: 18px; }
+.card--wide .card__title { font-size: 32px; line-height: 40px; }
 .card--wide .card__media { aspect-ratio: 16 / 9; }
 
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -133,8 +133,8 @@ img { display: block; max-width: 100%; height: auto; }
   padding: 3px 8px;
   border: 1px solid var(--border-strong);
   color: var(--text);
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 13px;
+  line-height: 20px;
 }
 .tags li::before { content: "[ "; color: var(--muted); }
 .tags li::after { content: " ]"; color: var(--muted); }
@@ -142,7 +142,7 @@ img { display: block; max-width: 100%; height: auto; }
 .links { display: flex; flex-wrap: wrap; gap: 22px; }
 .links a {
   color: var(--gold);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -150,7 +150,7 @@ img { display: block; max-width: 100%; height: auto; }
   transition: color 150ms ease-out;
 }
 .links a:hover { color: var(--text); }
-.links__note { color: var(--muted); font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; }
+.links__note { color: var(--muted); font-size: 13px; letter-spacing: 1.2px; text-transform: uppercase; }
 
 .badge {
   display: inline-flex;
@@ -159,7 +159,7 @@ img { display: block; max-width: 100%; height: auto; }
   padding: 3px 8px;
   border: 1px solid var(--gold);
   color: var(--gold);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 1px;
   text-transform: uppercase;
   white-space: nowrap;
@@ -167,25 +167,27 @@ img { display: block; max-width: 100%; height: auto; }
 .badge::before { content: ""; width: 6px; height: 6px; background: var(--gold); }
 
 /* ---------- Architecture ---------- */
-.split { display: grid; grid-template-columns: minmax(0, 400px) minmax(0, 1fr); gap: 48px; align-items: start; }
+.split { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: 48px; align-items: start; }
 .split__notes { display: grid; gap: 18px; }
 
-.diagram { display: grid; gap: 16px; padding: 28px; background: var(--panel); border: 1px solid var(--border); }
+.diagram { display: grid; gap: 18px; padding: 32px; background: var(--panel); border: 1px solid var(--border); }
 .diagram__row { display: grid; gap: 10px; }
-.diagram__row--mvc { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; }
+.diagram__row--mvc { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); align-items: stretch; }
+.diagram__row--mvc .arrow { align-self: center; }
+.box span { overflow-wrap: break-word; }
 .diagram__row--model { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.diagram__note { color: var(--muted); font-size: 12px; }
-.box { display: grid; gap: 4px; padding: 12px; background: var(--bg); border: 1px solid var(--border-strong); font-size: 12px; line-height: 18px; color: var(--muted); }
-.box strong { color: var(--text); font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; }
-.arrow { display: grid; justify-items: center; gap: 2px; color: var(--muted); font-size: 12px; }
+.diagram__note { color: var(--muted); font-size: 13px; }
+.box { display: grid; gap: 4px; padding: 18px 20px; background: #121212; border: 1px solid rgba(242, 196, 109, 0.22); font-size: 13px; line-height: 20px; color: var(--muted); }
+.box strong { margin-bottom: 4px; color: var(--gold); font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; }
+.arrow { display: grid; justify-items: center; gap: 2px; color: var(--muted); font-size: 13px; }
 .arrow b { font-weight: 400; color: var(--body); }
 .arrow--v { display: none; }
 
 /* ---------- About ---------- */
-.lead { font-size: 15px; line-height: 22px; letter-spacing: 0.3px; text-transform: uppercase; color: var(--text); }
+.lead { font-size: 18px; line-height: 28px; letter-spacing: 0.3px; text-transform: uppercase; color: var(--text); }
 .skills { display: grid; gap: 20px; padding: 24px; background: var(--panel); border: 1px solid var(--border); }
 .skills__group { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; align-items: start; }
-.skills__group h3 { padding-top: 4px; font-size: 12px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); }
+.skills__group h3 { padding-top: 4px; font-size: 13px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); }
 
 /* ---------- Contact ---------- */
 .contact { display: grid; gap: 18px; justify-items: start; padding: 40px; background: var(--panel); border: 1px solid var(--border); }
@@ -195,8 +197,8 @@ img { display: block; max-width: 100%; height: auto; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 13px 18px 13px 20px;
-  font-size: 12px;
+  padding: 14px 20px 14px 22px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -210,9 +212,19 @@ img { display: block; max-width: 100%; height: auto; }
 
 /* ---------- Footer ---------- */
 .foot { margin-top: 120px; border-top: 1px solid var(--border); }
-.foot__inner { display: flex; justify-content: space-between; gap: 16px; padding: 24px 0 32px; font-size: 12px; color: var(--muted); }
+.foot__inner { display: flex; justify-content: space-between; gap: 16px; padding: 24px 0 32px; font-size: 13px; color: var(--muted); }
 
 /* ---------- Narrower screens ---------- */
+@media (max-width: 1180px) {
+  .brand__role { display: none; }
+}
+
+/* The diagram needs the full width below this size; notes go above it. */
+@media (max-width: 1360px) {
+  #architecture .split { grid-template-columns: 1fr; gap: 32px; }
+  #architecture .split__notes { max-width: 640px; }
+}
+
 @media (max-width: 1100px) {
   :root { --gutter: 48px; }
   .card--wide { grid-template-columns: 1fr; }
@@ -220,8 +232,7 @@ img { display: block; max-width: 100%; height: auto; }
   .split { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 760px) {
-  :root { --gutter: 20px; --gap: 16px; }
+@media (max-width: 1000px) {
   .brand__role { display: none; }
   .menu {
     display: grid;
@@ -248,15 +259,23 @@ img { display: block; max-width: 100%; height: auto; }
     border-bottom: 1px solid var(--border);
   }
   .nav.is-open { display: flex; }
-  .nav a { padding: 16px 0; border-bottom: 1px solid var(--border); font-size: 15px; color: var(--text); }
+  .nav a { padding: 16px var(--gutter); border-bottom: 1px solid var(--border); font-size: 15px; color: var(--text); }
+  .nav { padding: 0 0 8px; }
   .top__inner { min-height: 68px; }
 
+}
+
+@media (max-width: 760px) {
+  :root { --gutter: 20px; --gap: 16px; }
+  body { font-size: 14px; }
   .section { padding-top: 72px; }
   .section--first { padding-top: 32px; }
   .grid { grid-template-columns: 1fr; }
   .card--wide .card__body, .card__body { padding: 20px; }
-  .card--wide .card__title { font-size: 20px; line-height: 28px; }
-  .title { font-size: 20px; line-height: 28px; }
+  .card--wide .card__title { font-size: 22px; line-height: 30px; }
+  .card__title { font-size: 16px; line-height: 24px; }
+  .title { font-size: 22px; line-height: 30px; }
+  .lead { font-size: 16px; line-height: 26px; }
 
   .diagram { padding: 16px; }
   .diagram__row--mvc, .diagram__row--model { grid-template-columns: 1fr; }
