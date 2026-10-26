@@ -16,4 +16,4 @@ My portfolio: games and full-stack apps I've built as a computer science student
 
 ## Built with
 
-Plain HTML, CSS and JavaScript, hosted on GitHub Pages. No build step: open `index.html`, or run `python3 -m http.server` in this folder and visit http://localhost:8000.
+HTML, CSS and JavaScript, hosted on GitHub Pages.
