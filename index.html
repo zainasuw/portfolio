@@ -124,22 +124,25 @@
         <div class="split">
           <div class="split__notes">
             <h3 class="title">Dungeon Adventure: core systems</h3>
-            <p>Model–view–controller on jMonkeyEngine. The controller is a jME app state that drives input and the game loop; the view listens for model changes and redraws the scene.</p>
-            <p>Heroes and monsters share an abstract DungeonCharacter. Factories build rooms and monsters, and save files and monster stats live in SQLite.</p>
+            <dl class="facts">
+              <div><dt>Pattern</dt><dd>Model–view–controller on jMonkeyEngine. The controller is a jME app state that drives input and the game loop; the view listens for model changes and redraws the scene.</dd></div>
+              <div><dt>Characters</dt><dd>Heroes and monsters share an abstract DungeonCharacter. Factories build the rooms and monsters.</dd></div>
+              <div><dt>Persistence</dt><dd>Save files and monster stats live in SQLite.</dd></div>
+            </dl>
             <p class="links"><a href="https://github.com/zainasuw/dungeon-adventure-game" target="_blank" rel="noopener">View source <span aria-hidden="true">↗</span></a></p>
           </div>
           <figure class="diagram" aria-label="Architecture diagram of Dungeon Adventure">
             <div class="diagram__row diagram__row--mvc">
-              <div class="box"><strong>Controller</strong><span>jME BaseAppState</span><span>input · game loop</span></div>
+              <div class="box"><span class="box__name">Controller</span><span>jME BaseAppState</span><span>input · game loop</span></div>
               <div class="arrow"><span>updates</span><b class="arrow--h">──▶</b><b class="arrow--v">▼</b></div>
-              <div class="box"><strong>GameModel</strong><span>RoomMap · roomFactory</span><span>PlayerInventory · Pillar</span></div>
+              <div class="box"><span class="box__name">GameModel</span><span>RoomMap · roomFactory</span><span>PlayerInventory · Pillar</span></div>
               <div class="arrow"><span>events</span><b class="arrow--h">──▶</b><b class="arrow--v">▼</b></div>
-              <div class="box"><strong>View</strong><span>property-change listener</span><span>inventory · pause GUI</span></div>
+              <div class="box"><span class="box__name">View</span><span>property-change listener</span><span>inventory · pause GUI</span></div>
             </div>
             <p class="diagram__note">▼ the model owns</p>
             <div class="diagram__row diagram__row--model">
-              <div class="box"><strong>Characters</strong><span>DungeonCharacter (abstract)</span><span>Hero → Warrior · Scout · Doctor</span><span>Monster → Gremlin · Ogre · Skeleton</span></div>
-              <div class="box"><strong>Persistence</strong><span>SaveLoadManager → SQLite</span><span>SaveData (serialized)</span><span>MonsterDatabase → SQLite</span></div>
+              <div class="box"><span class="box__name">Characters</span><span>DungeonCharacter (abstract)</span><span>Hero → Warrior · Scout · Doctor</span><span>Monster → Gremlin · Ogre · Skeleton</span></div>
+              <div class="box"><span class="box__name">Persistence</span><span>SaveLoadManager → SQLite</span><span>SaveData (serialized)</span><span>MonsterDatabase → SQLite</span></div>
             </div>
           </figure>
         </div>

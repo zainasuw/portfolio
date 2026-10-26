@@ -178,7 +178,12 @@ img { display: block; max-width: 100%; height: auto; }
 .diagram__row--model { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .diagram__note { color: var(--muted); font-size: 13px; }
 .box { display: grid; gap: 4px; padding: 18px 20px; background: #121212; border: 1px solid rgba(242, 196, 109, 0.22); font-size: 13px; line-height: 20px; color: var(--muted); }
-.box strong { margin-bottom: 4px; color: var(--gold); font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; }
+.box__name { margin-bottom: 4px; color: var(--gold); font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; }
+
+.facts { display: grid; gap: 12px; margin: 0; }
+.facts div { padding: 16px 18px; background: #121212; border: 1px solid rgba(242, 196, 109, 0.22); }
+.facts dt { color: var(--gold); font-size: 13px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; }
+.facts dd { margin: 6px 0 0; color: var(--body); }
 .arrow { display: grid; justify-items: center; gap: 2px; color: var(--muted); font-size: 13px; }
 .arrow b { font-weight: 400; color: var(--body); }
 .arrow--v { display: none; }
