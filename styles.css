@@ -245,6 +245,19 @@ button { font: inherit; color: inherit; }
 .more__list li::before { content: "▸"; position: absolute; left: 0; color: var(--gold); }
 .more__note { margin-top: 12px; font-size: 13px; color: var(--muted); }
 
+/* ---------- TCSS 490 artifacts ---------- */
+.artifacts { display: grid; gap: 16px; }
+.artifact { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 32px; padding: 28px 32px; background: var(--panel); border: 1px solid var(--border); }
+.artifact__meta { display: grid; gap: 4px; align-content: start; justify-items: start; }
+.artifact__num { color: var(--gold); font-size: 13px; font-weight: 500; letter-spacing: 1.2px; text-transform: uppercase; }
+.artifact__name { color: var(--muted); font-size: 13px; }
+.artifact__meta .badge { margin-top: 10px; }
+.artifact__body { display: grid; gap: 12px; justify-items: start; align-content: start; }
+.artifact__label { font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); }
+.artifact--planned { background: none; border-style: dashed; border-color: var(--border-strong); }
+.badge--muted { border-color: var(--border-strong); color: var(--muted); }
+.badge--muted::before { background: var(--muted); }
+
 /* ---------- Skills ---------- */
 .skills { display: grid; gap: 18px; padding: 28px 32px; background: var(--panel); border: 1px solid var(--border); }
 .skills__group { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 16px; align-items: baseline; }
@@ -386,6 +399,7 @@ button { font: inherit; color: inherit; }
   .card__title { font-size: 16px; line-height: 24px; }
   .card__actions .button { flex: 1 1 0; justify-content: center; }
   .title { font-size: 22px; line-height: 30px; }
+  .artifact { grid-template-columns: 1fr; gap: 14px; padding: 20px; }
 
   .skills { padding: 18px; }
   .skills__group { grid-template-columns: 1fr; gap: 6px; }
