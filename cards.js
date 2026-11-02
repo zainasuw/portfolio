@@ -31,9 +31,11 @@ const artifacts = [
   {
     number: 4,
     name: "For Someone Else",
-    status: "idea",
-    title: "Study group finder",
-    idea: "A study group finder for UW Tacoma classes, so nobody has to ask in the group chat.",
+    status: "progress",
+    title: "Scrawdle",
+    live: "https://scrawdle.vercel.app",
+    code: "https://github.com/kevlam1/Scrawdle",
+    reflection: "I joined a team of four building a daily drawing game and took on the drawing side: the tools, brush types, undo, auto-save, and the finish screen. My work is on my own branch and isn't merged yet. So far I've learned how much coordination matters when several people and their agents edit one project.",
   },
   {
     number: 5,
@@ -50,20 +52,22 @@ function linkButton(href, label, kind) {
 
 function artifactCard(a) {
   const built = a.status === "built";
+  const inProgress = a.status === "progress";
+  const hasReflection = built || inProgress;
   const links = [a.live && linkButton(a.live, "Live site", "primary"), a.code && linkButton(a.code, "GitHub", "ghost")]
     .filter(Boolean)
     .join("");
   return `
-    <article class="artifact${built ? "" : " artifact--planned"}">
+    <article class="artifact${hasReflection ? "" : " artifact--planned"}">
       <div class="artifact__meta">
         <p class="artifact__num">Artifact ${String(a.number).padStart(2, "0")}</p>
         <p class="artifact__name">${a.name}</p>
-        <span class="badge${built ? "" : " badge--muted"}">${built ? "Shipped" : "Planned"}</span>
+        <span class="badge${built ? "" : " badge--muted"}">${built ? "Shipped" : inProgress ? "In progress" : "Planned"}</span>
       </div>
       <div class="artifact__body">
         <h3 class="card__title">${a.title}</h3>
-        <p class="artifact__label">${built ? "Reflection" : "Idea"}</p>
-        <p>${built ? a.reflection : a.idea}</p>
+        <p class="artifact__label">${hasReflection ? "Reflection" : "Idea"}</p>
+        <p>${hasReflection ? a.reflection : a.idea}</p>
         ${links && `<div class="card__actions">${links}</div>`}
       </div>
     </article>`;
