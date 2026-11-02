@@ -76,8 +76,8 @@ button { font: inherit; color: inherit; }
 .hero .actions { margin-top: 36px; }
 
 /* ---------- Sections ---------- */
-.section { padding: 120px 0 0; }
-.section--first { padding-top: 72px; }
+.section { padding: 72px 0 0; }
+.section--first { padding-top: 48px; }
 .label {
   margin-bottom: 40px;
   font-size: 13px;
@@ -142,7 +142,7 @@ button { font: inherit; color: inherit; }
 .filter strong { color: var(--gold); font-weight: 500; }
 
 /* ---------- Cards ---------- */
-.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--gap); margin-top: var(--gap); }
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); margin-top: var(--gap); }
 .card--wide[hidden] + .grid { margin-top: 0; }
 
 .card {
@@ -175,17 +175,18 @@ button { font: inherit; color: inherit; }
 }
 
 .card__body { display: flex; flex-direction: column; gap: 16px; flex: 1; padding: 24px; }
+.grid .card__body { padding: 18px; gap: 12px; }
 .card__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .card__title { font-size: 18px; font-weight: 500; line-height: 26px; letter-spacing: 0.3px; text-transform: uppercase; color: var(--text); }
 .card__text { color: var(--body); }
 .grid .card .tags { margin-top: auto; }
 .card__actions { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 4px; }
 
-.card--wide { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+.card--wide { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); max-height: 280px; }
 .card--wide .card__media { aspect-ratio: 16 / 9; min-height: 100%; border-bottom: 0; border-right: 1px solid var(--border); }
 .card--wide .card__media img { position: absolute; inset: 0; }
-.card--wide .card__body { padding: 40px; justify-content: center; gap: 18px; }
-.card--wide .card__title { font-size: 32px; line-height: 40px; }
+.card--wide .card__body { padding: 24px 32px; justify-content: center; gap: 12px; }
+.card--wide .card__title { font-size: 24px; line-height: 32px; }
 
 /* Tech tags filter the projects. */
 .tags { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -336,7 +337,8 @@ button { font: inherit; color: inherit; }
 /* ---------- Narrower screens ---------- */
 @media (max-width: 1100px) {
   :root { --gutter: 48px; }
-  .card--wide { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .card--wide { grid-template-columns: 1fr; max-height: none; }
   .card--wide .card__media { border-right: 0; border-bottom: 1px solid var(--border); }
 }
 
