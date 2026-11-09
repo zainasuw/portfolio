@@ -31,11 +31,11 @@ const artifacts = [
   {
     number: 4,
     name: "For Someone Else",
-    status: "progress",
+    status: "built",
     title: "Scrawdle",
     live: "https://scrawdle.vercel.app",
     code: "https://github.com/kevlam1/Scrawdle",
-    reflection: "I joined a team of four building a daily drawing game and took on the drawing side: the tools, brush types, undo, auto-save, and the finish screen. My work is on my own branch and isn't merged yet. So far I've learned how much coordination matters when several people and their agents edit one project.",
+    reflection: "Four of us built Scrawdle, a daily drawing game: everyone gets the same animal parts, you draw the creature, then see what everyone else drew. I built the drawing side: the canvas with its tools and brushes, undo, auto-save, and stroke-by-stroke replay; then the whole look of the game, the illustrated tool icons, the arcade drawing screen with the easel and color markers, dark mode, and the screen sizing so the canvas fits laptops, split-screen windows and phones. I also added the Share and Report buttons, My drawings, color names for colorblind players, the invite flow for lobbies, and a fix for saving in Safari private windows. The hardest part was four people and their AI agents editing one project. Showing my redesign early in a video turned “we’ll keep ours” into “mix yours in.”",
   },
   {
     number: 5,
