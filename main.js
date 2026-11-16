@@ -210,15 +210,20 @@ if (rail && firstScreen) {
     targets.forEach((t, i) => { if (t && t.getBoundingClientRect().top <= line) current = links[i]; });
     // the last section can be too short to reach the line, so the end of the page counts
     if (scrollY + innerHeight >= document.documentElement.scrollHeight - 2) current = links[links.length - 1];
+    // near the end of the page the last two sections share the screen: keep the one the visitor asked for while it is still in view
+    const asked = links.find((a) => a.getAttribute("href") === location.hash);
+    const i = links.indexOf(asked);
+    if (asked && i >= links.length - 2 && left < innerHeight * 0.6 && targets[i] && targets[i].getBoundingClientRect().top >= 0) current = asked;
     mark(current);
   };
   const request = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
   addEventListener("scroll", request, { passive: true });
   addEventListener("resize", request);
   // a pressed link stays marked while the page travels to it; any scroll after it has settled re-reads the page
-  for (const a of links) a.addEventListener("click", () => { clicked = a; mark(a); clearTimeout(settle); settle = setTimeout(() => { settle = 0; }, 1500); });
-  addEventListener("scroll", () => { if (clicked && !settle) clicked = null; }, { passive: true });
-  addEventListener("scrollend", () => { clearTimeout(settle); settle = 0; }); // where the browser reports it, the travel ends exactly when it ends
+  // a pressed link stays marked while the page travels to it; when the travel ends the page is read again
+  const arrived = () => { clearTimeout(settle); settle = 0; clicked = null; request(); };
+  for (const a of links) a.addEventListener("click", () => { clicked = a; mark(a); clearTimeout(settle); settle = setTimeout(arrived, 1500); });
+  addEventListener("scrollend", () => { if (clicked) arrived(); });
   for (const type of ["wheel", "touchmove", "keydown", "pointerdown"]) addEventListener(type, (e) => { if (!e.target.closest || !e.target.closest(".rail")) clicked = null; }, { passive: true });
   update();
 }

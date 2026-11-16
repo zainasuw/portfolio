@@ -266,8 +266,9 @@ kbd { display: inline-grid; place-items: center; min-width: 1.7em; height: 1.7em
   :root { --rail: 44px; }
 }
 /* Projects lands with the first screen fully behind the bar; everything else gets a little air under it */
-.js .work { scroll-margin-top: var(--rail); }
-.js :is(.sheet, .classwork, .skills, .contact, .play-phone) { scroll-margin-top: calc(var(--rail) + 16px); }
+/* nothing the page scrolls to, by link or by keyboard, lands under the bar */
+html.js { scroll-padding-top: var(--rail); }
+.js :is(.sheet, .classwork, .skills, .contact, .play-phone) { scroll-margin-top: 16px; }
 .skills:focus, .contact:focus { outline: none; box-shadow: none; }
 @media (max-width: 520px) {
   .rail { justify-content: space-between; padding: 0 6px; }
@@ -302,7 +303,7 @@ body:has(dialog[open]) { overflow: hidden; } /* the page stays put behind the ga
 main { overflow-x: clip; }
 .desk__nav a, .button { min-height: 44px; }
 .screen__loading { position: absolute; inset: 0; display: grid; place-content: center; padding: 24px; text-align: center; color: #d9efec; font-weight: 600; text-wrap: balance; }
-/* six names sit on one line each where there is room for them; narrower landscape windows get two rows of three */
+/* the names sit on one line each where there is room for them; narrower landscape windows wrap onto two rows */
 @media (min-width: 1000px) and (orientation: landscape), (min-width: 1101px) {
-  .index ol { grid-template-columns: repeat(6, minmax(max-content, 1fr)); }
+  .index ol { grid-template-columns: repeat(5, minmax(max-content, 1fr)); }
 }

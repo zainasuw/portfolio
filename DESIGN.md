@@ -191,7 +191,7 @@ Each sheet is printed in its project's colour with its own soft ink and cut colo
 
 ## Layout
 
-The first screen fills the viewport (at least 640px tall) as a grid: the name spans the top; the heroes sit lower right over the end of "Stanikzy"; the role line and two pills sit lower left; a six-column project index runs along the bottom above a hairline. Side gutters are `max(clamp(18px, 4vw, 64px), (100% − 1840px) / 2)`, so on very wide screens the composition stays together and the top links align with it.
+The first screen fills the viewport (at least 640px tall) as a grid: the name spans the top; the heroes sit lower right over the end of "Stanikzy"; the role line and two pills sit lower left; a five-column project index runs along the bottom above a hairline. Side gutters are `max(clamp(18px, 4vw, 64px), (100% − 1840px) / 2)`, so on very wide screens the composition stays together and the top links align with it.
 
 On tall screens (phones, and tablets held upright up to 1100px) the first screen stacks in reading order: name, heroes just under it (never covering it at phone sizes), the hint, the role, full-width pills, then the index as a list. Below 520px each index item puts its description under its name.
 
@@ -225,7 +225,7 @@ Rounded, cut-from-vinyl forms: stickers have an 18px corner and an 8px white bor
 A button holding a still render of the Warrior and the Thief (820×466 frame). After the page loads, on devices with a mouse and without reduced motion, a 21-frame turn sheet (±38°) loads and the heroes turn to face the pointer across the whole window. Click, Enter or tap plays their cheer (rendered from the game's Cheer animation) once. The hint under them says "Click" or "Tap" to match the device.
 
 ### Project index
-Six links along the bottom of the first screen: name (17px, 700) and a one-line kind and team (14px, cream soft), each kept on one line from 1000px wide; below 1200px they step down to 15px and 13px, and narrower landscape windows show two rows of three. Hovering a name with a mouse shows that project's real screen beside the pointer.
+Five links along the bottom of the first screen: name (17px, 700) and a one-line kind and team (14px, cream soft), each kept on one line from 1000px wide; below 1200px they step down to 15px and 13px, and narrower landscape windows wrap onto two rows. Hovering a name with a mouse shows that project's real screen beside the pointer.
 
 ### Sticker sheet
 A liner printed in the project's colour holding real captures as stickers (with kiss cuts), its title, a lede, a facts line, what she did, an optional "How it's built" fold-out, actions and a credit line.
