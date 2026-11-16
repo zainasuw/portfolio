@@ -3,251 +3,324 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Zainab Stanikzy</title>
-  <meta name="description" content="Zainab Stanikzy, computer science at UW Tacoma. Games, full-stack apps and AI-powered tools.">
-  <meta name="color-scheme" content="dark">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <title>Zainab Stanikzy · Games and full-stack apps</title>
+  <meta name="description" content="Zainab Stanikzy, computer science at the University of Washington. Games you can play right on the page, full-stack apps, and the design of both.">
+  <meta name="theme-color" content="#24655f">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Zainab Stanikzy · Games and full-stack apps">
+  <meta property="og:description" content="Computer science at the University of Washington. Play my games right on the page.">
+  <meta property="og:url" content="https://zainasuw.github.io/portfolio/">
+  <meta property="og:image" content="https://zainasuw.github.io/portfolio/images/home/share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Zainab Stanikzy, with the Warrior and the Thief from her game Dungeon Adventure">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add("js")</script>
+  <link rel="preload" href="fonts/BricolageGrotesque.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip" href="#work">Skip to the projects</a>
 
-  <header class="top">
-    <div class="wrap top__inner">
-      <a class="brand" href="#intro">Zainab Stanikzy</a>
-      <button class="menu" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav" id="nav" aria-label="Sections">
-        <a href="#projects">Projects</a>
-        <a href="#artifacts">Artifacts</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-        <a href="https://github.com/zainasuw" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
-      </nav>
-    </div>
+  <!-- icons -->
+  <svg class="defs" aria-hidden="true" focusable="false">
+    <symbol id="i-play" viewBox="0 0 20 20"><path d="M6.5 4.6v10.8c0 .6.7 1 1.2.7l8.3-5.4a.8.8 0 0 0 0-1.4L7.7 3.9c-.5-.3-1.2.1-1.2.7Z" fill="currentColor"/></symbol>
+    <symbol id="i-out" viewBox="0 0 20 20"><path d="M7 4.5h8.5V13M15.2 4.8 4.8 15.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 20 20"><path d="m5 5 10 10M15 5 5 15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M6 10h.01M9 10h.01M12 10h.01M15 10h.01M18 10h.01M7.5 14h9" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+    <symbol id="i-link" viewBox="0 0 20 20"><path d="M8.5 11.5a3 3 0 0 0 4.2 0l2.6-2.6a3 3 0 0 0-4.2-4.2l-.9.9M11.5 8.5a3 3 0 0 0-4.2 0l-2.6 2.6a3 3 0 0 0 4.2 4.2l.9-.9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 20 20"><path d="M10 4.5v11M4.5 10h11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <header class="desk">
+    <nav class="desk__nav" aria-label="Main">
+      <a href="#work">Projects</a>
+      <a href="#tcss490">TCSS 490</a>
+      <a href="https://github.com/zainasuw" target="_blank" rel="noopener">GitHub<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+      <a href="https://www.linkedin.com/in/zainabstanikzy/" target="_blank" rel="noopener">LinkedIn<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+    </nav>
   </header>
 
   <main>
+    <!-- First screen: her name, and the heroes from her game, who turn to look at you -->
+    <section class="hero" aria-labelledby="name">
+      <h1 id="name" class="hero__name"><span>Zainab</span> <span>Stanikzy</span></h1>
 
-    <section id="intro" class="hero">
-      <div class="wrap">
-        <h1 class="hero__name">Zainab Stanikzy</h1>
-        <p class="hero__role">Computer science student at the University of Washington Tacoma.</p>
-        <p class="hero__pitch">I build things.</p>
-        <p class="actions">
-          <a class="button button--primary" href="#projects">View projects <span class="button__icon button__icon--down" aria-hidden="true">↓</span></a>
-          <a class="button button--ghost" href="https://www.linkedin.com/in/zainabstanikzy/" target="_blank" rel="noopener">LinkedIn <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
-          <a class="button button--ghost" href="https://github.com/zainasuw" target="_blank" rel="noopener">GitHub <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
+      <div class="hero__stage">
+        <button class="heroes" type="button" aria-label="Say hi to the Warrior and the Thief from my game Dungeon Adventure">
+          <img class="heroes__still" src="images/home/heroes.webp" alt="" width="820" height="466">
+          <span class="heroes__turn" aria-hidden="true"></span>
+        </button>
+        <p class="heroes__hint" aria-hidden="true">The Warrior and the Thief, from my game. Click to say hi.</p>
+      </div>
+
+      <div class="hero__intro">
+        <p class="hero__role">Computer science at the University of Washington. I make games and <span class="nowrap">full-stack</span> apps, and I design how they look and feel.</p>
+        <p class="hero__actions">
+          <a class="pill pill--go" href="#dungeon" data-play="dungeon" data-touch-href="#dungeon-preview" data-touch-label="See Dungeon Adventure"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg><span>Play Dungeon Adventure</span></a>
+          <a class="pill pill--light" href="#work">See all my work</a>
         </p>
       </div>
+
+      <nav class="index" aria-label="Projects">
+        <ol>
+          <li><a href="#dungeon" data-peek="images/home/dungeon-title.webp"><b>Dungeon Adventure</b><span>3D browser game&nbsp;· solo</span></a></li>
+          <li><a href="#scrawdle" data-peek="images/home/scrawdle-tv.webp"><b>Scrawdle</b><span>Drawing game&nbsp;· solo</span></a></li>
+          <li><a href="#uxaudit" data-peek="images/home/uxaudit-report.webp"><b>UXAudit</b><span>AI design review&nbsp;· solo</span></a></li>
+          <li><a href="#huskyhub" data-peek="images/home/huskyhub-now.webp"><b>HuskyHub</b><span>Campus app&nbsp;· live</span></a></li>
+          <li><a href="#jam" data-peek="images/home/jam-choices.webp"><b>It’s a Feature, Not a Bug</b><span>Game jam&nbsp;· team of three</span></a></li>
+          <li><a href="#tetris" data-peek="images/home/tetris-pink.webp"><b>Tetris</b><span>Java game&nbsp;· team of four</span></a></li>
+        </ol>
+      </nav>
     </section>
 
-    <section id="projects" class="section section--first">
-      <div class="wrap">
-        <div class="section__head">
-          <h2 class="label" id="projects-title" tabindex="-1">// Projects</h2>
-          <p class="hint">Select a tag to filter</p>
-        </div>
+    <!-- The bar that appears once the first screen has scrolled away -->
+    <nav class="rail" aria-label="Page" inert>
+      <a href="#work">Projects</a>
+      <a href="#tcss490">TCSS 490</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
-        <div class="filter" id="filter" hidden>
-          <p aria-live="polite">Showing <span id="filter-count"></span> using <strong id="filter-name"></strong></p>
-          <button class="button button--sm button--ghost" type="button" id="filter-clear">Clear filter <span aria-hidden="true">✕</span></button>
-        </div>
+    <!-- One sticker sheet per project -->
+    <section class="work" id="work" aria-labelledby="work-title" tabindex="-1">
+      <h2 id="work-title" class="section-title">Things I’ve made</h2>
 
-        <article class="card card--wide">
-          <div class="card__media">
-            <img src="images/dungeon-adventure.jpg" alt="A torch-lit stone dungeon corridor" width="1280" height="714">
-          </div>
-          <div class="card__body">
-            <h3 class="card__title">Dungeon Adventure</h3>
-            <p class="card__text">A 3D dungeon crawler with hero selection, dynamic combat and saved runs, built on an MVC architecture.</p>
-            <ul class="tags">
-              <li><button class="tag" type="button" data-tag="Java">Java</button></li>
-              <li><button class="tag" type="button" data-tag="JavaFX">JavaFX</button></li>
-              <li><button class="tag" type="button" data-tag="jMonkeyEngine">jMonkeyEngine</button></li>
-              <li><button class="tag" type="button" data-tag="SQLite">SQLite</button></li>
+      <article class="sheet sheet--dungeon" id="dungeon" aria-labelledby="dungeon-title">
+        <div class="sheet__media">
+          <figure class="cut cut--wide"><img src="images/home/dungeon-heroes.webp" alt="Dungeon Adventure’s Choose your hero screen: Warrior, Priestess, Thief and Doctor in a candle-lit crypt, with health, power and speed and three difficulties" width="960" height="600" loading="lazy"></figure>
+        </div>
+        <div class="sheet__text">
+          <h3 id="dungeon-title">Dungeon Adventure</h3>
+          <p class="lede">A 3D dungeon adventure you play in the browser. Pick a hero, wake the four pillars, beat the skeletons and escape through the golden door.</p>
+          <p class="facts">Built solo&nbsp;· TypeScript&nbsp;· three.js&nbsp;· Vite</p>
+          <ul class="did">
+            <li>Four heroes, each with their own abilities, and three difficulties, including an Easy mode made for kids.</li>
+            <li>Real-time combat, pillars to wake and a golden door to escape through.</li>
+          </ul>
+          <details class="how">
+            <summary><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>How it’s built</summary>
+            <ul>
+              <li>Rendered with three.js, with ambient occlusion and post-processing for the candle-lit crypt.</li>
+              <li>3D models compressed with meshopt through glTF-Transform, so the whole game loads in a few megabytes.</li>
+              <li>TypeScript and Vite, deployed to GitHub Pages by a GitHub Actions workflow on every push.</li>
             </ul>
-            <div class="card__actions">
-              <button class="button button--sm button--primary" type="button" data-open-dialog="architecture">System architecture <span class="button__icon button__icon--right" aria-hidden="true">→</span></button>
-              <a class="button button--sm button--ghost" href="https://github.com/zainasuw/dungeon-adventure-game" target="_blank" rel="noopener">GitHub <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
+          </details>
+          <div class="play-desk">
+            <div class="actions">
+              <button class="pill pill--go" type="button" data-play="dungeon"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>Play here</button>
+              <a class="pill" href="https://zainasuw.github.io/dungeon-adventure/" target="_blank" rel="noopener">Open full game<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+              <a class="pill" href="https://github.com/zainasuw/dungeon-adventure" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
             </div>
+            <p class="keys"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> walk · <kbd>F</kbd> attack · <kbd>Space</kbd> dodge</p>
           </div>
-        </article>
-
-        <div class="grid">
-          <article class="card">
-            <div class="card__media card__media--browser">
-              <div class="window"><div class="window__bar"><i></i><i></i><i></i></div>
-                <img src="images/uxaudit.jpg" alt="The UXAudit start screen with a website address field" width="1280" height="800" loading="lazy">
-              </div>
+          <div class="play-phone" id="dungeon-preview">
+            <p class="kbd-note"><svg class="i i--lg" aria-hidden="true"><use href="#i-key"/></svg><span><b>Playing needs a keyboard.</b> Open this page on a computer to play it right here. Meanwhile, here’s what it looks like.</span></p>
+            <ul class="strip" aria-label="Screens from Dungeon Adventure">
+              <li><img src="images/home/dungeon-title.webp" alt="Title screen" width="1120" height="700" loading="lazy"><span>Title screen</span></li>
+              <li><img src="images/home/dungeon-heroes.webp" alt="Choose your hero: Warrior, Priestess, Thief and Doctor, with health, power and speed" width="960" height="600" loading="lazy"><span>Choose your hero</span></li>
+              <li><img src="images/home/dungeon-play.webp" alt="The Warrior in the first hall of the crypt" width="960" height="600" loading="lazy"><span>In the first hall</span></li>
+            </ul>
+            <div class="actions">
+              <button class="pill pill--go" type="button" data-copy="#dungeon"><svg class="i" aria-hidden="true"><use href="#i-link"/></svg><span>Copy link for later</span></button>
+              <a class="pill" href="https://github.com/zainasuw/dungeon-adventure" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
             </div>
-            <div class="card__body">
-              <h3 class="card__title">UXAudit</h3>
-              <p class="card__text">Paste any public web address and get desktop and phone screenshots, measured checks and an AI design critique.</p>
-              <ul class="tags">
-                <li><button class="tag" type="button" data-tag="TypeScript">TypeScript</button></li>
-                <li><button class="tag" type="button" data-tag="Node.js">Node.js</button></li>
-                <li><button class="tag" type="button" data-tag="Playwright">Playwright</button></li>
-                <li><button class="tag" type="button" data-tag="Gemini API">Gemini API</button></li>
-              </ul>
-              <div class="card__actions">
-                <a class="button button--sm button--primary" href="https://cvdvnu-uxaudit.hf.space" target="_blank" rel="noopener">Live site <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
-                <a class="button button--sm button--ghost" href="https://github.com/zainasuw/uxaudit" target="_blank" rel="noopener">GitHub <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media card__media--browser">
-              <div class="window"><div class="window__bar"><i></i><i></i><i></i></div>
-                <img src="images/its-a-feature-not-a-bug.jpg" alt="Title screen of the game: Dating Simulator! It's a Romance, Not a Bug" width="1280" height="719" loading="lazy">
-              </div>
-            </div>
-            <div class="card__body">
-              <h3 class="card__title">It’s a Feature, Not a Bug</h3>
-              <p class="card__text">A dating sim built in one weekend for the UW Tri-Campus Game Jam 2026 with a team of three.</p>
-              <ul class="tags">
-                <li><button class="tag" type="button" data-tag="JavaScript">JavaScript</button></li>
-                <li><button class="tag" type="button" data-tag="HTML Canvas">HTML Canvas</button></li>
-                <li><button class="tag" type="button" data-tag="Game jam">Game jam</button></li>
-              </ul>
-              <div class="card__actions">
-                <a class="button button--sm button--primary" href="https://la-petite-baleine.github.io/TriCampusJam2026/" target="_blank" rel="noopener">Play demo <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
-                <a class="button button--sm button--ghost" href="https://github.com/zainasuw/TriCampusJam2026" target="_blank" rel="noopener">GitHub <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <img src="images/tetris.jpg" alt="A neon Tetris board with falling blocks" width="1280" height="714" loading="lazy">
-            </div>
-            <div class="card__body">
-              <h3 class="card__title">Tetris</h3>
-              <p class="card__text">Tetris with custom themes, animated effects and multiplayer scoring, built by a team of four in Agile sprints.</p>
-              <ul class="tags">
-                <li><button class="tag" type="button" data-tag="Java">Java</button></li>
-                <li><button class="tag" type="button" data-tag="Swing">Swing</button></li>
-                <li><button class="tag" type="button" data-tag="JavaFX">JavaFX</button></li>
-                <li><button class="tag" type="button" data-tag="Team of 4">Team of 4</button></li>
-              </ul>
-              <div class="card__actions">
-                <a class="button button--sm button--ghost" href="https://github.com/zainasuw/group3-tetris" target="_blank" rel="noopener">GitHub <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card__media">
-              <img src="images/huskyhub.jpg" alt="Two phones showing a dark campus status app" width="1280" height="714" loading="lazy">
-            </div>
-            <div class="card__body">
-              <div class="card__head">
-                <h3 class="card__title">HuskyHub</h3>
-                <span class="badge">In development</span>
-              </div>
-              <p class="card__text">A “what’s open right now” app for UW students: study rooms, dining hours, bus arrivals and weather, with no login.</p>
-              <ul class="tags">
-                <li><button class="tag" type="button" data-tag="React Native">React Native</button></li>
-                <li><button class="tag" type="button" data-tag="Expo">Expo</button></li>
-                <li><button class="tag" type="button" data-tag="Node.js">Node.js</button></li>
-                <li><button class="tag" type="button" data-tag="Express">Express</button></li>
-              </ul>
-              <details class="more">
-                <summary>Key features</summary>
-                <ul class="more__list">
-                  <li>Live study-room availability</li>
-                  <li>Dining hours, bus arrivals and weather in one place</li>
-                  <li>No login: everything comes from public data</li>
-                  <li>React Native app with a Node.js and Express backend that pulls live campus data</li>
-                </ul>
-                <p class="more__note">The code is private while the app is in development.</p>
-              </details>
-            </div>
-          </article>
+            <p class="copied" role="status" aria-live="polite"></p>
+          </div>
+          <p class="credit">3D characters and dungeon: KayKit by Kay Lousberg (CC0). Screens captured from the live game.</p>
         </div>
+      </article>
+
+      <article class="sheet sheet--scrawdle sheet--flip" id="scrawdle" aria-labelledby="scrawdle-title">
+        <div class="sheet__media">
+          <figure class="cut cut--wide"><img src="images/home/scrawdle-tv.webp" srcset="images/home/scrawdle-tv.webp 1120w, images/home/scrawdle-tv-1600.webp 1600w" sizes="(max-width: 760px) 90vw, (orientation: portrait) and (max-width: 1100px) 90vw, 560px" alt="Scrawdle’s TV screen at the end of a game: Maya wins! with the three players on a podium" width="1120" height="630" loading="lazy"></figure>
+          <figure class="cut cut--phone"><img src="images/home/scrawdle-phone.webp" srcset="images/home/scrawdle-phone-320.webp 320w, images/home/scrawdle-phone.webp 560w" sizes="(max-width: 760px) 30vw, (orientation: portrait) and (max-width: 1100px) 30vw, 150px" alt="Drawing on a phone: the word, a countdown and a smiley face on the canvas" width="560" height="887" loading="lazy"></figure>
+        </div>
+        <div class="sheet__text">
+          <h3 id="scrawdle-title">Scrawdle</h3>
+          <p class="lede">A drawing party game for friends and families: it plays on a TV, everyone joins on their own phone, and a dice roll picks the word.</p>
+          <p class="facts">Designed and built solo&nbsp;· JavaScript&nbsp;· HTML &amp; CSS&nbsp;· Supabase</p>
+          <ul class="did">
+            <li>A same-room party game: a TV host screen, joining by room code, anonymous voting, points and a winner podium.</li>
+            <li>One word to draw, picked by an animated 3D dice roll from an original list of 252 kid-friendly words.</li>
+            <li>Every screen designed as a TV game show, with phones as contestant buzzer pads.</li>
+          </ul>
+          <details class="how">
+            <summary><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>How it plays</summary>
+            <ol>
+              <li>Host a game on a TV or laptop. The screen shows a room code and a QR code.</li>
+              <li>Everyone joins on their own phone and picks a name.</li>
+              <li>A die rolls onto the stage, lands on a category, and the word flips onto the board.</li>
+              <li>Everyone draws it on their phone before the clock runs out.</li>
+              <li>The TV shows every drawing with no names, everyone votes, and points are revealed.</li>
+            </ol>
+          </details>
+          <div class="actions">
+            <a class="pill pill--go" href="https://scrawdle-two.vercel.app" target="_blank" rel="noopener">Try it live<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+            <a class="pill" href="https://github.com/zainasuw/scrawdle" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+          </div>
+          <p class="credit">A party needs a TV or laptop plus phones; Daily Word and Quick draw work solo. My own version of the team game in my class work below.</p>
+        </div>
+      </article>
+
+      <article class="sheet sheet--ux sheet--flip" id="uxaudit" aria-labelledby="ux-title">
+        <div class="sheet__media">
+          <figure class="cut cut--wide"><img src="images/home/uxaudit-report.webp" alt="A UXAudit report: “Your design review”, an AI summary and a design score of 8" width="1120" height="638" loading="lazy"></figure>
+          <figure class="cut cut--phone"><img src="images/home/uxaudit-phone.webp" alt="The same report on a phone" width="560" height="933" loading="lazy"></figure>
+        </div>
+        <div class="sheet__text">
+          <h3 id="ux-title">UXAudit</h3>
+          <p class="lede">Paste any public web address and get desktop and phone screenshots, measured checks and an AI design critique.</p>
+          <p class="facts">Built solo&nbsp;· TypeScript&nbsp;· Node.js&nbsp;· Playwright&nbsp;· Gemini API</p>
+          <ul class="did">
+            <li>Captures the page on desktop and phone, then measures eleven facts the browser can prove, like headings, labels and tap-target size.</li>
+            <li>The AI critique scores the design out of ten with evidence and suggested changes, and every reply is strictly validated before it’s shown.</li>
+            <li>Only public addresses are analysed, and every request goes through a guarded proxy. 34 automated tests.</li>
+          </ul>
+          <details class="how">
+            <summary><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>How an audit works</summary>
+            <ol>
+              <li>The address is checked: only public http and https sites are accepted.</li>
+              <li>A sandboxed Chromium opens the page at 1280 × 800 and 390 × 844, scrolls it and captures it.</li>
+              <li>The page is measured in the browser: title, language, headings, image descriptions, link names, form labels and more.</li>
+              <li>The screenshots and measurements go to Gemini; its reply must match a strict shape before the report appears.</li>
+            </ol>
+          </details>
+          <div class="actions">
+            <a class="pill pill--go" href="https://cvdvnu-uxaudit.hf.space" target="_blank" rel="noopener">Try it live<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+            <a class="pill" href="https://github.com/zainasuw/uxaudit" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+          </div>
+          <p class="credit">It runs on a free host that sleeps when nobody has used it for a while; the first visit can then take two to four minutes to wake it.</p>
+        </div>
+      </article>
+
+      <article class="sheet sheet--hub" id="huskyhub" aria-labelledby="husky-title">
+        <div class="sheet__media">
+          <figure class="cut cut--wide"><img src="images/home/huskyhub-now.webp" srcset="images/home/huskyhub-now.webp 1120w, images/home/huskyhub-now-1600.webp 1600w" sizes="(max-width: 760px) 90vw, (orientation: portrait) and (max-width: 1100px) 90vw, 560px" alt="HuskyHub’s Now screen on a laptop: Odegaard Library, free till 10, with today’s timeline, a Book this room button and two backup rooms" width="1120" height="700" loading="lazy"></figure>
+          <figure class="cut cut--phone"><img src="images/home/huskyhub-phone.webp" srcset="images/home/huskyhub-phone-320.webp 320w, images/home/huskyhub-phone.webp 560w" sizes="(max-width: 760px) 30vw, (orientation: portrait) and (max-width: 1100px) 30vw, 150px" alt="The Rooms screen on a phone: libraries ranked by how many rooms are free now" width="560" height="933" loading="lazy"></figure>
+        </div>
+        <div class="sheet__text">
+          <h3 id="husky-title">HuskyHub</h3>
+          <p class="lede">Where can I study right now? HuskyHub shows UW Seattle students which library rooms are free at this moment and until when, with no login.</p>
+          <p class="facts">Live, in progress&nbsp;· React Native&nbsp;· TypeScript&nbsp;· Node.js&nbsp;· SQLite</p>
+          <ul class="did">
+            <li>One answer instead of a dashboard: the best free room right now, plus the next bus and food that’s open.</li>
+            <li>Honest data: every number says how old it is, even when a refresh fails.</li>
+            <li>Works on phones and laptops, by keyboard and with screen readers. 155 automated tests.</li>
+          </ul>
+          <details class="how">
+            <summary><svg class="i" aria-hidden="true"><use href="#i-plus"/></svg>How it’s built</summary>
+            <ul>
+              <li>The backend (Node 22, TypeScript, Hono and SQLite) runs on Fly.io and regularly checks library room grids, UW library and dining pages, OneBusAway and the National Weather Service.</li>
+              <li>The site is a static Expo web export on Cloudflare, served with a strict security policy.</li>
+              <li>No accounts and no personal data. Only the site can call the API, and requests are rate-limited and validated.</li>
+            </ul>
+          </details>
+          <div class="actions">
+            <a class="pill pill--go" href="https://huskyhub.app" target="_blank" rel="noopener">Try it live<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+          </div>
+          <p class="credit">A student project, not affiliated with the University of Washington. Buses, Food and a campus map are still being built.</p>
+        </div>
+      </article>
+
+      <article class="sheet sheet--jam" id="jam" aria-labelledby="jam-title">
+        <div class="sheet__media">
+          <figure class="cut cut--wide"><img src="images/home/jam-choices.webp" alt="A dialogue choice in the game: Who are you? How do I know you’re not lying? Woohoo! Bring in the men" width="1120" height="700" loading="lazy"></figure>
+          <figure class="cut cut--inset"><img src="images/home/jam-name.webp" alt="The glitch screen: USER_IDENTITY_DATA_CORRUPT, enter user designation" width="960" height="540" loading="lazy"></figure>
+        </div>
+        <div class="sheet__text">
+          <h3 id="jam-title">It’s a Feature, Not a Bug</h3>
+          <p class="lede">A dating sim built in one weekend for the UW Tri-Campus Game Jam 2026 with a team of three.</p>
+          <p class="facts">Team of three&nbsp;· I was a programmer and designer&nbsp;· JavaScript&nbsp;· HTML Canvas</p>
+          <ul class="did">
+            <li>Made the female character sprite in VRoid Studio.</li>
+            <li>Built the glitch intro, the chaos system, the endings and the visit logic.</li>
+            <li>Made the effect sprite sheets and compressed the game’s assets.</li>
+          </ul>
+          <div class="play-desk">
+            <div class="actions">
+              <button class="pill pill--go" type="button" data-play="jam"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>Play here</button>
+              <a class="pill" href="https://la-petite-baleine.github.io/TriCampusJam2026/" target="_blank" rel="noopener">Open full game<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+              <a class="pill" href="https://github.com/zainasuw/TriCampusJam2026" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+            </div>
+            <p class="keys">Click to play · type your name and press <kbd>Enter</kbd> when it asks</p>
+          </div>
+          <div class="play-phone" id="jam-preview">
+            <p class="kbd-note"><svg class="i i--lg" aria-hidden="true"><use href="#i-key"/></svg><span><b>Playing needs a keyboard</b>: the game asks you to type your name. Open this page on a computer to play it right here.</span></p>
+            <ul class="strip" aria-label="Screens from It’s a Feature, Not a Bug">
+              <li><img src="images/home/jam-title.webp" alt="Title screen: Dating Simulator! It’s a Romance, Not a Bug" width="960" height="540" loading="lazy"><span>Title screen</span></li>
+              <li><img src="images/home/jam-intro.webp" alt="The PerfectMatch intro, glitching: error, match overflow" width="960" height="540" loading="lazy"><span>The glitch intro</span></li>
+              <li><img src="images/home/jam-name.webp" alt="A stop screen asking for your name" width="960" height="540" loading="lazy"><span>Where it asks your name</span></li>
+            </ul>
+            <div class="actions">
+              <button class="pill pill--go" type="button" data-copy="#jam"><svg class="i" aria-hidden="true"><use href="#i-link"/></svg><span>Copy link for later</span></button>
+              <a class="pill" href="https://github.com/zainasuw/TriCampusJam2026" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+            </div>
+            <p class="copied" role="status" aria-live="polite"></p>
+          </div>
+          <p class="credit">Built on a course engine by Chris Marriott; third-party art and music are credited in the repo.</p>
+        </div>
+      </article>
+
+      <article class="sheet sheet--tetris sheet--flip" id="tetris" aria-labelledby="tetris-title">
+        <div class="sheet__media">
+          <figure class="cut cut--tall"><img src="images/home/tetris-pink.webp" alt="Tetris in Pink Mode: glossy pink, lilac and gold blocks with sparkles" width="530" height="640" loading="lazy"></figure>
+        </div>
+        <div class="sheet__text">
+          <h3 id="tetris-title">Tetris</h3>
+          <p class="lede">Tetris with custom themes, animated effects and multiplayer scoring, built by a team of four in Agile sprints.</p>
+          <p class="facts">Team of four&nbsp;· Java&nbsp;· Swing</p>
+          <ul class="did">
+            <li>Designed the glossy, 3D-shaded block style with sparkles.</li>
+            <li>Made Pink Mode: its own colours, animated glitter and music.</li>
+          </ul>
+          <div class="actions">
+            <a class="pill" href="https://github.com/zainasuw/group3-tetris" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+          </div>
+          <p class="credit">A desktop Java game, so it can’t run in a browser. Screens captured by running it.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="classwork" id="tcss490" aria-labelledby="tcss-title" tabindex="-1">
+      <h2 id="tcss-title" class="section-title">TCSS 490 artifacts</h2>
+      <p class="classwork__when">Class work · Autumn 2026</p>
+      <div class="artifacts" id="artifact-list"></div>
+      <noscript><p class="classwork__nojs">These cards need JavaScript. Turn it on to see the artifacts and their links.</p></noscript>
+    </section>
+
+    <section class="skills" id="skills" aria-labelledby="skills-title" tabindex="-1">
+      <h2 id="skills-title" class="section-title">Skills</h2>
+      <div class="dots">
+        <div><h3>Languages</h3><ul><li>Java</li><li>JavaScript</li><li>TypeScript</li><li>HTML &amp; CSS</li></ul></div>
+        <div><h3>Games</h3><ul><li>three.js</li><li>HTML Canvas</li><li>Swing</li></ul></div>
+        <div><h3>Web &amp; mobile</h3><ul><li>Node.js</li><li>React Native</li><li>Expo</li><li>Supabase</li><li>Playwright</li></ul></div>
+        <div><h3>Tools &amp; practice</h3><ul><li>Git</li><li>Agile sprints</li><li>SQLite</li></ul></div>
       </div>
     </section>
 
-    <section id="artifacts" class="section">
-      <div class="wrap">
-        <div class="section__head">
-          <h2 class="label">// TCSS 490 artifacts</h2>
-          <p class="hint">Class work · Autumn 2026</p>
-        </div>
-        <div class="artifacts" id="artifact-list"></div>
-      </div>
+    <section class="contact" id="contact" aria-labelledby="contact-title" tabindex="-1">
+      <h2 id="contact-title" class="contact__title">Let’s build something together.</h2>
+      <p>Connect with me on LinkedIn.</p>
+      <a class="pill pill--go pill--big" href="https://www.linkedin.com/in/zainabstanikzy/" target="_blank" rel="noopener">LinkedIn<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
     </section>
-
-    <section id="skills" class="section">
-      <div class="wrap">
-        <h2 class="label">// Skills</h2>
-        <div class="skills">
-          <div class="skills__group"><h3>Languages</h3><ul class="skill-list"><li>Java</li><li>JavaScript</li><li>TypeScript</li><li>HTML &amp; CSS</li></ul></div>
-          <div class="skills__group"><h3>Games</h3><ul class="skill-list"><li>JavaFX</li><li>jMonkeyEngine</li><li>HTML Canvas</li><li>Swing</li></ul></div>
-          <div class="skills__group"><h3>Web &amp; mobile</h3><ul class="skill-list"><li>Node.js</li><li>Express</li><li>React Native</li><li>Expo</li><li>Playwright</li></ul></div>
-          <div class="skills__group"><h3>Tools &amp; practice</h3><ul class="skill-list"><li>Git</li><li>Agile sprints</li><li>MVC</li><li>SQLite</li></ul></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="wrap">
-        <h2 class="label">// Contact</h2>
-        <div class="contact">
-          <h3 class="title">Let’s build something together.</h3>
-          <p>Connect with me on LinkedIn.</p>
-          <p class="actions">
-            <a class="button button--primary" href="https://www.linkedin.com/in/zainabstanikzy/" target="_blank" rel="noopener">LinkedIn <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
-          </p>
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <dialog class="dialog" id="architecture" aria-labelledby="architecture-title">
-    <div class="dialog__head">
-      <div>
-        <p class="label">// System architecture</p>
-        <h2 class="title" id="architecture-title">Dungeon Adventure: core systems</h2>
-      </div>
-      <button class="dialog__close" type="button" aria-label="Close" autofocus>✕</button>
-    </div>
-    <div class="dialog__body">
-      <dl class="facts">
-        <div><dt>Pattern</dt><dd>Model–view–controller on jMonkeyEngine. The controller is a jME app state that drives input and the game loop; the view listens for model changes and redraws the scene.</dd></div>
-        <div><dt>Characters</dt><dd>Heroes and monsters share an abstract DungeonCharacter. Factories build the rooms and monsters.</dd></div>
-        <div><dt>Persistence</dt><dd>Save files and monster stats live in SQLite.</dd></div>
-      </dl>
-      <figure class="diagram" aria-label="Architecture diagram of Dungeon Adventure">
-        <div class="diagram__row diagram__row--mvc">
-          <div class="box"><span class="box__name">Controller</span><span>jME BaseAppState</span><span>input · game loop</span></div>
-          <div class="arrow"><span>updates</span><b class="arrow--h">──▶</b><b class="arrow--v">▼</b></div>
-          <div class="box"><span class="box__name">GameModel</span><span>RoomMap · roomFactory</span><span>PlayerInventory · Pillar</span></div>
-          <div class="arrow"><span>events</span><b class="arrow--h">──▶</b><b class="arrow--v">▼</b></div>
-          <div class="box"><span class="box__name">View</span><span>property-change listener</span><span>inventory · pause GUI</span></div>
-        </div>
-        <p class="diagram__note">▼ the model owns</p>
-        <div class="diagram__row diagram__row--model">
-          <div class="box"><span class="box__name">Characters</span><span>DungeonCharacter (abstract)</span><span>Hero → Warrior · Scout · Doctor</span><span>Monster → Gremlin · Ogre · Skeleton</span></div>
-          <div class="box"><span class="box__name">Persistence</span><span>SaveLoadManager → SQLite</span><span>SaveData (serialized)</span><span>MonsterDatabase → SQLite</span></div>
-        </div>
-      </figure>
-      <p class="actions">
-        <a class="button button--sm button--ghost" href="https://github.com/zainasuw/dungeon-adventure-game" target="_blank" rel="noopener">View source <span class="button__icon button__icon--up" aria-hidden="true">↗</span></a>
-      </p>
-    </div>
-  </dialog>
-
   <footer class="foot">
-    <div class="wrap foot__inner">
-      <p>© 2026 Zainab Stanikzy</p>
-      <p>HTML · CSS · JavaScript · GitHub Pages</p>
-    </div>
+    <p>© 2026 Zainab Stanikzy</p>
+    <p>Built with HTML, CSS and JavaScript · Hosted on GitHub Pages</p>
   </footer>
+
+  <!-- The game window: a live game, loaded only when someone asks to play -->
+  <dialog class="screen" id="game" aria-labelledby="game-title">
+    <div class="screen__bar">
+      <p class="screen__title"><span id="game-title">Game</span><span class="screen__hint" id="game-hint"></span></p>
+      <a class="pill pill--quiet" id="game-full" href="#" target="_blank" rel="noopener">Open full game<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+      <button class="pill pill--close" type="button" data-close><svg class="i" aria-hidden="true"><use href="#i-close"/></svg>Close game</button>
+    </div>
+    <div class="screen__glass"><div class="screen__frame" id="game-frame"></div></div>
+  </dialog>
 
   <script src="cards.js"></script>
   <script src="main.js"></script>

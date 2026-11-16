@@ -40,9 +40,10 @@ const artifacts = [
   {
     number: 5,
     name: "The Moonshot",
-    status: "idea",
+    status: "progress",
     title: "HuskyHub",
-    idea: "Finish HuskyHub and get it into the hands of real students.",
+    live: "https://huskyhub.app",
+    reflection: "This week I turned my earlier campus app into a project real students can use. Instead of polishing the old interface, I redesigned it from scratch. My first round of four designs all failed for the same reason: they were crowded dashboards in different styles. Researching apps like Transit and Apple Weather taught me to lead with one clear answer. I rebuilt the Now and Rooms screens around that idea and put the app live on huskyhub.app.\n\nThe biggest lessons were about honesty in data. I found and fixed bugs where rooms vanished after 4pm because the server ran on UTC, rooms showed as free when they were actually unavailable, and outages looked like “nothing coming.” I also hardened security before going public with rate limits, input validation and a strict content security policy, and I kept a log of every plan and change in the repo.\n\nNext I’m polishing the interface based on design reviews (ranking rooms by how long they stay free, better night photos, a fuller laptop layout) and releasing the Buses and Food tabs, which are built and reviewed.",
   },
 ];
 
@@ -67,7 +68,7 @@ function artifactCard(a) {
       <div class="artifact__body">
         <h3 class="card__title">${a.title}</h3>
         <p class="artifact__label">${hasReflection ? "Reflection" : "Idea"}</p>
-        <p>${hasReflection ? a.reflection : a.idea}</p>
+        ${(hasReflection ? a.reflection : a.idea).split("\n\n").map((t) => `<p>${t}</p>`).join("")}
         ${links && `<div class="card__actions">${links}</div>`}
       </div>
     </article>`;
