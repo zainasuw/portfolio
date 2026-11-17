@@ -2,7 +2,6 @@
 
 **Live site: https://zainasuw.github.io/portfolio/**
 
-My portfolio: games and full-stack apps I've built as a computer science student at the University of Washington. The home page opens with my name and the Warrior and the Thief from my game Dungeon Adventure, who turn to look at you; below, each project has its own sheet. Two of my games play right on the page, and a slim bar follows you down it.
 
 ## Projects on the site
 
