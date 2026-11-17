@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dungeon Adventure · Zainab Stanikzy</title>
+  <meta name="description" content="Dungeon Adventure: a 3D dungeon adventure you play in the browser. Its heroes, its halls and how it is built.">
+  <meta name="theme-color" content="#251b2c">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Dungeon Adventure · Zainab Stanikzy">
+  <meta property="og:description" content="A 3D dungeon adventure you play in the browser. Pick a hero, wake the four pillars, beat the skeletons and escape.">
+  <meta property="og:url" content="https://zainasuw.github.io/portfolio/dungeon-adventure/">
+  <meta property="og:image" content="https://zainasuw.github.io/portfolio/images/dungeon/share.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Dungeon Adventure’s title screen: four heroes in a torch-lit hall">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add("js")</script>
+  <link rel="preload" href="../fonts/BricolageGrotesque.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip" href="#story">Skip to the content</a>
+
+  <svg class="defs" aria-hidden="true" focusable="false">
+    <symbol id="i-play" viewBox="0 0 20 20"><path d="M6.5 4.6v10.8c0 .6.7 1 1.2.7l8.3-5.4a.8.8 0 0 0 0-1.4L7.7 3.9c-.5-.3-1.2.1-1.2.7Z" fill="currentColor"/></symbol>
+    <symbol id="i-out" viewBox="0 0 20 20"><path d="M7 4.5h8.5V13M15.2 4.8 4.8 15.2" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 20 20"><path d="M3.5 10h13M11.5 5 16.5 10l-5 5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <nav class="story-bar" aria-label="This page">
+    <a href="../#dungeon"><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>Zainab Stanikzy</a>
+    <a href="#heroes">Heroes</a>
+    <a href="#run">The run</a>
+    <a href="#views">Views</a>
+    <a href="#built">How it’s built</a>
+  </nav>
+
+  <main id="story">
+    <header class="story">
+      <div class="story__top">
+        <figure class="cut story__stage"><img src="../images/home/dungeon-heroes.webp" alt="Dungeon Adventure’s Choose your hero screen: Warrior, Priestess, Thief and Doctor in a candle-lit crypt" width="960" height="600"></figure>
+        <div class="story__lead">
+          <h1>Dungeon Adventure</h1>
+          <p class="lede">A 3D dungeon adventure you play in the browser. Pick a hero, wake the four pillars, beat the skeletons and escape through the golden door.</p>
+          <p class="facts">TypeScript&nbsp;· three.js&nbsp;· Vite</p>
+          <p class="actions">
+            <a class="pill pill--go" href="../?play=dungeon#dungeon"><svg class="i" aria-hidden="true"><use href="#i-play"/></svg>Play it on the portfolio</a>
+            <a class="pill" href="https://zainasuw.github.io/dungeon-adventure/" target="_blank" rel="noopener">Open the full game<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+            <a class="pill" href="https://github.com/zainasuw/dungeon-adventure" target="_blank" rel="noopener">Code<svg class="i" aria-hidden="true"><use href="#i-out"/></svg></a>
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <div class="story__body">
+      <section class="story__section story__band" id="heroes" aria-labelledby="heroes-title">
+        <h2 id="heroes-title">Four heroes, one for every kind of player</h2>
+        <figure class="cut story__full"><img src="../images/dungeon/title.webp" alt="The title screen: the Warrior, the Priestess, the Thief and the Doctor standing in a torch-lit hall under the name Dungeon Adventure" width="1280" height="800" loading="lazy"></figure>
+        <div class="story__cols">
+          <p>Warrior, Priestess, Thief and Doctor, each with their own special ability. You choose with the mouse or the arrow keys, pick a difficulty, and your hero drops into the first hall.</p>
+          <ul>
+            <li>Three difficulties, from kid-easy up.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="story__section story__band" id="run" aria-labelledby="run-title">
+        <h2 id="run-title">Every hall has its own job</h2>
+        <div class="story__cols">
+          <p>Follow the glowing gold marker. Light the lanterns, find the lost books, smash the crystals, catch the wisps or hold out. Then take the pillar at the altar and beat the skeletons it wakes.</p>
+          <ul>
+            <li>Spend your coins at the merchant, pick a blessing, and walk through the golden door.</li>
+            <li>Wake all four pillars, then defeat the Skeleton King to escape.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="story__section story__band" id="views" aria-labelledby="views-title">
+        <h2 id="views-title">Three ways to see it</h2>
+        <ol class="story__trio">
+          <li><figure class="cut"><img src="../images/dungeon/first-person.webp" alt="The first hall through the hero’s eyes, still dark, sword and shield in hand" width="1280" height="800" loading="lazy"></figure><b>Through your hero’s eyes</b><span>How every run starts. The first hall is dark until you light the torch.</span></li>
+          <li><figure class="cut"><img src="../images/dungeon/behind.webp" alt="The camera behind the Warrior in a corridor" width="1280" height="800" loading="lazy"></figure><b>Behind the hero</b><span>Press <kbd>V</kbd> to step back and see who you are playing.</span></li>
+          <li><figure class="cut"><img src="../images/dungeon/above.webp" alt="The same hall seen from above" width="1280" height="800" loading="lazy"></figure><b>From above</b><span>Press <kbd>V</kbd> again to look down on the whole hall.</span></li>
+        </ol>
+</section>
+
+      <section class="story__section story__band" id="built" aria-labelledby="built-title">
+        <h2 id="built-title">How it’s built</h2>
+        <div class="story__cols">
+          <ul>
+            <li>Rendered with <a href="https://threejs.org/" target="_blank" rel="noopener">three.js</a>, with ambient occlusion and post-processing for the candle-lit crypt.</li>
+            <li>3D models compressed with meshopt through glTF-Transform, so the whole game loads in a few megabytes.</li>
+            <li>TypeScript and <a href="https://vite.dev/" target="_blank" rel="noopener">Vite</a>, deployed to GitHub Pages by a GitHub Actions workflow on every push.</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="story__end">
+        <p>3D characters, dungeon pieces and animations: <a href="https://kaylousberg.com/" target="_blank" rel="noopener">KayKit</a> by Kay Lousberg (CC0). Ability icons: <a href="https://game-icons.net/" target="_blank" rel="noopener">game-icons.net</a> by Lorc, Delapouite, Darkzaitzev and Sbed (CC BY 3.0).</p>
+        <a class="pill" href="../#dungeon"><svg class="i" aria-hidden="true" style="transform:rotate(180deg)"><use href="#i-arrow"/></svg>Back to the portfolio</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <p>© 2026 Zainab Stanikzy</p>
+    <p><a href="../credits.html">Credits</a></p>
+  </footer>
+  <script>
+    addEventListener("load", () => requestAnimationFrame(() => document.documentElement.classList.add("smooth")));
+    // On a phone the game opens in its own tab, so the button goes straight to it.
+    if (!matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      const go = document.querySelector(".story .pill--go");
+      go.href = "https://zainasuw.github.io/dungeon-adventure/"; go.target = "_blank"; go.rel = "noopener";
+      go.innerHTML = '<svg class="i" aria-hidden="true"><use href="#i-play"/></svg>Play it<svg class="i" aria-hidden="true"><use href="#i-out"/></svg>';
+    }
+    // The bar marks the section you are reading.
+    (() => {
+      const links = [...document.querySelectorAll('.story-bar a[href^="#"]')], secs = links.map((a) => document.querySelector(a.getAttribute("href")));
+      const read = () => {
+        let cur = null;
+        secs.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= innerHeight * 0.4) cur = links[i]; });
+        for (const a of links) { if (a === cur) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); }
+        const bar = document.querySelector(".story-bar");
+        if (cur && bar.scrollWidth > bar.clientWidth) bar.scrollTo({ left: Math.max(0, cur.offsetLeft - (bar.clientWidth - cur.offsetWidth) / 2) });
+        bar.classList.toggle("has-more", bar.scrollLeft + bar.clientWidth < bar.scrollWidth - 1);
+      };
+      let q = false; addEventListener("scroll", () => { if (!q) { q = true; requestAnimationFrame(() => { q = false; read(); }); } }, { passive: true }); read();
+    })();
+  </script>
+</body>
+</html>
