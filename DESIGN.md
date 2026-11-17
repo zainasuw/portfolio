@@ -225,10 +225,10 @@ Rounded, cut-from-vinyl forms: stickers have an 18px corner and an 8px white bor
 A button holding a still render of the Warrior and the Thief (820×466 frame). After the page loads, on devices with a mouse and without reduced motion, a 21-frame turn sheet (±38°) loads and the heroes turn to face the pointer across the whole window. Click, Enter or tap plays their cheer (rendered from the game's Cheer animation) once. The hint under them says "Click" or "Tap" to match the device.
 
 ### Project index
-Five links along the bottom of the first screen: name (17px, 700) and a one-line kind and team (14px, cream soft), each kept on one line from 1000px wide; narrower landscape windows wrap onto two rows. Hovering a name with a mouse shows that project's real screen beside the pointer.
+Five links along the bottom of the first screen: name (17px, 700) and a one-line kind and team (14px, cream soft), each kept on one line from 1000px wide; below 1200px they step down to 15px and 13px, and narrower landscape windows wrap onto two rows. Hovering a name with a mouse shows that project's real screen beside the pointer.
 
 ### Sticker sheet
-A liner printed in the project's colour holding real captures as stickers (with kiss cuts), its title, a lede, a facts line, what she did, an optional "How it's built" fold-out and actions. Sheets carry no small print.
+A liner printed in the project's colour holding real captures as stickers (with kiss cuts), its title, a lede, a facts line, what she did, an optional "How it's built" fold-out, actions and a credit line.
 
 ### Label tab
 The TCSS 490 cards (rendered by the untouched cards.js) wear a dark printed-ink tab on their top edge for number, assignment and status.
@@ -237,12 +237,12 @@ The TCSS 490 cards (rendered by the untouched cards.js) wear a dark printed-ink 
 A modal window with a dark bezel, the game's name and controls hint, "Open full game" and a white "Close game" pill. The live game loads only when opened, scales to fit, and is removed entirely on close or Esc. On touch devices, keyboard games show an inline preview instead: real screens in a swipe strip, a plain "Playing needs a keyboard" note and "Copy link for later".
 
 ### Game window extras
-While a game loads, the window shows a short "Loading the game…" note. The page behind the window does not scroll while it is open. Focus stays on the window's own buttons, so Esc closes it until the visitor clicks into the game; a click outside the window closes it too. If the game is slow, the note points to "Open full game". Keyboard players Tab to the game and press Enter to hand it the keyboard. A click outside only closes the window when the press starts and ends out there. If the game cannot be reached, the window says so. In a window too small to play in, Play opens the full game in its own tab; without JavaScript the Play buttons are plain links to the full games.
+While a game loads, the window shows a short "Loading the game…" note. The page behind the window does not scroll while it is open.
 
 ### Navigation
 Four quiet links top right on the field (Projects, TCSS 490, GitHub, LinkedIn), 15px bold, cream, with a faint pill tint on hover.
 
-Once the first screen has scrolled away, a slim bar in Field Teal slides in along the top (36px tall; 44px on touch screens): Projects, TCSS 490, Skills and Contact, right-aligned to the same gutter, in Cream Soft at 14px/500. The section you are in turns Cream, bold and underlined. It is deliberately quieter than the other labels, carries no name, and its focus ring is a single inset Cream ring, since the two-tone ring would not fit inside it. It also slides in whenever the keyboard reaches one of its links, so Tab never skips it.
+Once the first screen has scrolled away, a slim bar in Field Teal slides in along the top (36px tall; 44px on touch screens): Projects, TCSS 490, Skills and Contact, right-aligned to the same gutter, in Cream Soft at 14px/500. The section you are in turns Cream, bold and underlined. It is deliberately quieter than the other labels, carries no name, and its focus ring is a single inset Cream ring, since the two-tone ring would not fit inside it.
 
 ## Do's and Don'ts
 

@@ -24,8 +24,7 @@
   --ease: cubic-bezier(.16, 1, .3, 1);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html.smooth { scroll-behavior: smooth; }
-html { -webkit-text-size-adjust: 100%; scrollbar-color: var(--teal) var(--desk); }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scrollbar-color: var(--teal) var(--desk); }
 body { background: var(--desk); color: var(--ink); font-family: "Hanken Grotesk", system-ui, sans-serif; font-weight: 400; font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
 ::selection { background: var(--pink); color: var(--ink); }
 a { color: inherit; text-underline-offset: 3px; }
@@ -79,6 +78,8 @@ kbd { display: inline-grid; place-items: center; min-width: 1.7em; height: 1.7em
 .index span { font-size: 14px; color: var(--cream-soft); text-wrap: balance; }
 .nowrap { white-space: nowrap; }
 .index a:hover b { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.peek { position: fixed; left: 0; top: 0; z-index: 20; width: 300px; height: auto; padding: 7px; background: #fff; border-radius: 16px; box-shadow: var(--shadow-up); pointer-events: none; opacity: 0; transform: translate(-50%, calc(-100% - 22px)) rotate(-3deg) scale(.9); transition: opacity .25s, transform .35s var(--ease); }
+.peek.is-on { opacity: 1; transform: translate(-50%, calc(-100% - 22px)) rotate(-3deg) scale(1); }
 
 /* Below the first screen: sticker sheets laid on the desk */
 .work, .classwork, .skills, .contact { width: min(1180px, 100% - 2 * var(--m)); margin: 0 auto; }
@@ -200,6 +201,21 @@ kbd { display: inline-grid; place-items: center; min-width: 1.7em; height: 1.7em
 .contact__title { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-variation-settings: "opsz" 96; font-size: clamp(40px, 6vw, 88px); line-height: .95; letter-spacing: -.035em; color: var(--ink); text-wrap: balance; }
 .contact p { margin: 18px 0 26px; font-size: 18px; }
 
+/* The game window */
+.screen { margin: auto; padding: 0; border: 0; background: transparent; max-width: none; max-height: none; overflow: visible; }
+.screen::backdrop { background: rgba(14, 30, 28, .72); backdrop-filter: blur(3px); }
+.screen__bar { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: #fff; }
+.screen__title { flex: 1; font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; letter-spacing: -.01em; font-size: 22px; line-height: 1.3; }
+.screen__title span { display: block; }
+.screen__hint { font-family: "Hanken Grotesk", sans-serif; font-weight: 500; font-size: 13.5px; line-height: 1.6; color: #d9efec; }
+.screen__title kbd { font-size: 11px; }
+.pill--quiet { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .6); }
+.pill--quiet:hover { background: #fff; color: var(--ink); }
+.pill--close { background: #fff; color: var(--ink); border-color: #fff; min-height: 48px; padding: 0 20px; font-size: 16px; }
+.pill--close:hover { background: var(--pink); border-color: var(--pink); color: var(--ink); }
+.screen__glass { padding: 12px; border-radius: 22px; background: #111; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .6); }
+.screen__frame { width: var(--gw, 960px); height: var(--gh, 600px); --fw: 960px; --fh: 600px; overflow: hidden; border-radius: 10px; background: #000; position: relative; }
+.screen__frame iframe { position: absolute; left: 0; top: 0; width: var(--fw); height: var(--fh); border: 0; transform-origin: 0 0; transform: scale(var(--gs, 1)); }
 
 /* Tall screens (phones, upright tablets): name, heroes, intro and index stack in reading order */
 @media (max-width: 760px), (orientation: portrait) and (max-width: 1100px) {
@@ -213,7 +229,8 @@ kbd { display: inline-grid; place-items: center; min-width: 1.7em; height: 1.7em
   .index li + li { border-top: 1px solid rgba(247, 239, 227, .2); }
   .index a { min-height: 60px; padding: 12px 0; flex-direction: row; align-items: baseline; justify-content: space-between; gap: 12px; }
   .index span { text-align: right; }
-  }
+  .peek { display: none; }
+}
 @media (max-width: 520px) {
   .hero__stage { margin-top: 0; }
   .index a { flex-direction: column; align-items: flex-start; gap: 2px; }
@@ -231,15 +248,13 @@ kbd { display: inline-grid; place-items: center; min-width: 1.7em; height: 1.7em
   .actions .pill { flex: 1 1 auto; justify-content: center; }
 }
 @media (prefers-reduced-motion: reduce) {
-  html, html.smooth { scroll-behavior: auto; }
-  .pill { transition: none; }
+  html { scroll-behavior: auto; }
+  .pill, .peek { transition: none; }
 }
 
 /* The bar that appears after the first screen: slim and quiet, in the first screen's teal and cream */
-.rail { position: fixed; inset: 0 0 auto 0; z-index: 15; display: flex; align-items: center; justify-content: flex-end; gap: 2px; height: var(--rail); padding: 0 calc(var(--gutter) - 10px); background: var(--teal); color: var(--cream); transform: translateY(-110%); transition: transform .3s var(--ease); }
-/* it also slides in whenever the keyboard reaches one of its links, so Tab never skips it */
-.rail.is-on, .rail:focus-within { transform: none; }
-.rail:not(.is-on):not(:focus-within) { pointer-events: none; }
+.rail { position: fixed; inset: 0 0 auto 0; z-index: 15; display: flex; align-items: center; justify-content: flex-end; gap: 2px; height: var(--rail); padding: 0 calc(var(--gutter) - 10px); background: var(--teal); color: var(--cream); transform: translateY(-110%); visibility: hidden; transition: transform .3s var(--ease), visibility .3s; }
+.rail.is-on { transform: none; visibility: visible; }
 .rail a { display: inline-flex; align-items: center; height: var(--rail); padding: 0 10px; font-weight: 500; font-size: 14px; text-decoration: none; white-space: nowrap; color: var(--cream-soft); }
 .rail a:hover, .rail a[aria-current="true"] { color: var(--cream); }
 @media (hover: hover) {
@@ -261,6 +276,13 @@ html.js { scroll-padding-top: var(--rail); }
 @media (prefers-reduced-motion: reduce) {
   .rail, .how summary .i, .desk__nav a { transition: none; }
 }
+/* six names in a row need a little less room each on smaller laptops, so the first screen still fits */
+@media (min-width: 761px) and (max-width: 1199px) and (orientation: landscape) {
+  .index a { min-height: 0; padding: 12px 12px 14px 0; }
+  .index b { font-size: 15px; }
+  .index span { font-size: 13px; }
+}
+body:has(dialog[open]) { overflow: hidden; } /* the page stays put behind the game window */
 
 /* Scrawdle's sheet: the game show's stage purple, with its marquee gold */
 .sheet--scrawdle { --sheet: #1d1440; --sheet-ink: #f7efe3; --sheet-soft: #cfc6ee; --sheet-cut: rgba(247, 239, 227, .42); }
@@ -269,7 +291,7 @@ html.js { scroll-padding-top: var(--rail); }
 .sheet--scrawdle .cut { background: #f7efe3; }
 .sheet--scrawdle .did li::before { background: #f2c35b; }
 .sheet--scrawdle .how summary .i { color: var(--pink); }
-/* the first screen's project index */
+/* six projects in the first screen's index, where they sit in a row */
 @media (min-width: 761px) and (orientation: landscape), (min-width: 1101px) {
   .index ol { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .index a { padding-right: 20px; }
@@ -280,326 +302,8 @@ html.js { scroll-padding-top: var(--rail); }
 /* a sticker's cut line may reach past the page edge on upright tablets; it never makes the page scroll sideways */
 main { overflow-x: clip; }
 .desk__nav a, .button { min-height: 44px; }
+.screen__loading { position: absolute; inset: 0; display: grid; place-content: center; padding: 24px; text-align: center; color: #d9efec; font-weight: 600; text-wrap: balance; }
 /* the names sit on one line each where there is room for them; narrower landscape windows wrap onto two rows */
 @media (min-width: 1000px) and (orientation: landscape), (min-width: 1101px) {
   .index ol { grid-template-columns: repeat(5, minmax(max-content, 1fr)); }
 }
-/* the heroes' focus ring stays inside the first screen instead of being cut at its edge */
-.heroes:focus-visible { outline-offset: -8px; box-shadow: inset 0 0 0 5px #fff; }
-
-/* ---- Play in place: the still screen grows where it stands and becomes the game ---- */
-.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.sheet.is-playing { grid-template-columns: 1fr; row-gap: 14px; padding-block: 18px 20px; }
-.sheet.is-playing .sheet__media { justify-self: center; width: min(100%, var(--stage-w, 100%)); margin: 0; }
-.sheet.is-playing .cut--wide { transform: none; box-shadow: var(--shadow-up); }
-.sheet.is-playing .cut--wide > img { width: 100%; height: auto; aspect-ratio: var(--stage-ar); object-fit: cover; position: relative; z-index: 2; transition: opacity .4s var(--ease); }
-.sheet.is-playing .cut--inset, .sheet.is-playing .cut--phone { display: none; }
-.live { position: absolute; inset: 8px; border-radius: 11px; overflow: hidden; background: #0d0a14; }
-.live iframe { position: absolute; left: 0; top: 0; border: 0; transform-origin: 0 0; transform: scale(var(--gs, 1)); }
-/* the hand-over: still, then the game's own opening screen, then the game itself */
-.live__opening { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; border-radius: 0; opacity: 0; filter: brightness(.86) saturate(.9); }
-/* the opening screen is simply there, dimmed, under the still; only the still fades, so nothing shows through */
-.cut--wide.is-opening .live__opening { opacity: 1; }
-.cut--wide.is-opening > img { opacity: 0; pointer-events: none; }
-/* when the game is ready the dimmed opening screen fades away and the lights come up on the real thing */
-.cut--wide.is-live .live__opening { opacity: 0; pointer-events: none; transition: opacity .4s var(--ease); }
-.cut--wide.is-live > img { opacity: 0; pointer-events: none; }
-/* a label tab on the sticker's top edge says what is happening, like the tabs on the class-work cards */
-.live__note { position: absolute; z-index: 3; left: 14px; top: -15px; padding: 6px 13px; border-radius: 18px; background: var(--ink); color: #fff; font-size: 13.5px; font-weight: 700; line-height: 1.3; box-shadow: var(--shadow); }
-.live__note a { color: #fff; }
-/* while it wakes, the cut line around the sticker breathes */
-@keyframes waking { 50% { opacity: .35; } }
-.cut--wide.is-waking::before { animation: waking 1.4s ease-in-out infinite; }
-/* while it plays, the sheet keeps only what you need: its name and keys on the left, the way out on the right */
-.sheet.is-playing .sheet__text { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 22px; align-items: center; width: min(100%, var(--stage-w, 100%)); justify-self: center; }
-.sheet.is-playing .sheet__text > :not(h3):not(.play-desk) { display: none; }
-.sheet.is-playing .sheet__text h3 { grid-column: 1; grid-row: 1; font-size: clamp(22px, 2vw, 28px); }
-.sheet.is-playing .play-desk { display: contents; }
-.sheet.is-playing .play-desk .keys { grid-column: 1; grid-row: 2; margin: 4px 0 0; text-wrap: balance; }
-.sheet.is-playing .play-desk .actions { grid-column: 2; grid-row: 1 / span 2; margin: 0; flex-wrap: nowrap; }
-/* the motion: everything travels together; the old words leave first and the new row arrives last */
-::view-transition-group(*) { animation-duration: .6s; animation-timing-function: cubic-bezier(.22, 1, .36, 1); }
-::view-transition-old(*), ::view-transition-new(*) { height: 100%; object-fit: none; object-position: top; }
-::view-transition-old(stage), ::view-transition-new(stage) { object-fit: cover; object-position: center; }
-::view-transition-old(root), ::view-transition-new(root) { animation-duration: .2s; }
-@keyframes words-out { to { opacity: 0; } }
-@keyframes words-in { from { opacity: 0; transform: translateY(6px); } }
-::view-transition-old(stage-text) { animation: words-out .06s ease-out both; height: auto; object-fit: none; object-position: left top; }
-::view-transition-new(stage-text) { animation: words-in .22s .3s ease-out both; height: auto; object-fit: none; object-position: left top; }
-:root[data-vt="out"]::view-transition-group(*) { animation-duration: .38s; }
-:root[data-vt="out"]::view-transition-new(stage-text) { animation-delay: .16s; }
-@media (prefers-reduced-motion: reduce) {
-  .sheet.is-playing .cut--wide > img, .live__opening { transition: none; }
-  .cut--wide.is-waking::before { animation: none; }
-}
-
-/* ---- The game window (the first screen's Play button) ---- */
-.screen { margin: auto; padding: 0; border: 0; background: transparent; max-width: none; max-height: none; overflow: visible; }
-.screen::backdrop { background: rgba(14, 30, 28, .72); backdrop-filter: blur(3px); }
-.screen__bar { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; color: #fff; }
-.screen__title { flex: 1; font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; letter-spacing: -.01em; font-size: 22px; line-height: 1.3; }
-.screen__title span { display: block; }
-.screen__hint { font-family: "Hanken Grotesk", sans-serif; font-weight: 500; font-size: 13.5px; line-height: 1.6; color: #d9efec; }
-.screen__title kbd { font-size: 11px; }
-.pill--quiet { background: transparent; color: #fff; border-color: rgba(255, 255, 255, .6); }
-.pill--quiet:hover { background: #fff; color: var(--ink); }
-.pill--close { background: #fff; color: var(--ink); border-color: #fff; min-height: 48px; padding: 0 20px; font-size: 16px; }
-.pill--close:hover { background: var(--pink); border-color: var(--pink); color: var(--ink); }
-.screen__glass { padding: 12px; border-radius: 22px; background: #111; box-shadow: 0 30px 80px -20px rgba(0, 0, 0, .6); }
-.screen__frame { width: var(--gw, 960px); height: var(--gh, 600px); --fw: 960px; --fh: 600px; overflow: hidden; border-radius: 10px; background: #000; position: relative; }
-.screen__frame iframe { position: absolute; left: 0; top: 0; width: var(--fw); height: var(--fh); border: 0; transform-origin: 0 0; transform: scale(var(--gs, 1)); }
-body:has(dialog[open]) { overflow: hidden; } /* the page stays put behind the game window */
-.screen__loading { position: absolute; inset: 0; display: grid; place-content: center; padding: 24px; text-align: center; color: #d9efec; font-weight: 600; text-wrap: balance; }
-.screen__loading a { color: #fff; }
-.screen:focus { outline: none; box-shadow: none; }
-.screen__frame:focus-visible { outline: 3px solid #fff; outline-offset: 3px; box-shadow: none; }
-.screen__hint { width: 0; min-width: 100%; }
-.screen__glass.has-keys { outline: 3px solid var(--pink); outline-offset: 2px; }
-/* a word left on a resting sticker after a game could not load */
-.cut--wide > .live__note { transform: none; }
-
-/* ================= The slice: opening, one project scene, and its story ================= */
-/* Opening: each project is there as its own sticker, pressed along the bottom of the field, big enough to read */
-.index ol { align-items: end; }
-.index__thumb { width: clamp(96px, min(13.2vw, 21vh), 208px); max-width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; padding: 5px; background: var(--cream); border-radius: 13px; box-shadow: var(--shadow); margin: 0 0 12px; transform: rotate(-4deg); transform-origin: 50% 85%; transition: transform .45s var(--ease), box-shadow .45s var(--ease); }
-.index li:nth-child(2) .index__thumb { transform: rotate(3deg) translateY(-8px); }
-.index li:nth-child(3) .index__thumb { transform: rotate(-1.5deg) translateY(4px); }
-.index li:nth-child(4) .index__thumb { transform: rotate(4.5deg) translateY(-4px); }
-.index li:nth-child(5) .index__thumb { transform: rotate(-2.5deg); }
-.index a:hover .index__thumb, .index a:focus-visible .index__thumb { transform: rotate(0) translateY(-12px) scale(1.1); box-shadow: var(--shadow-up); }
-.index a { padding-top: 0; margin-top: -26px; } /* the stickers overlap the hairline, as if stuck over it */
-@media (min-width: 1000px) and (orientation: landscape), (min-width: 1101px) { .hero__intro { padding-bottom: calc(3vh + 44px); } }
-.index { border-top-color: rgba(247, 239, 227, .22); }
-/* the heroes' caption is a quiet tab that shows when you are near them, and never sits on them */
-.hero .heroes__hint { right: 2%; bottom: auto; top: -4%; pointer-events: none; padding: 6px 12px; border-radius: 18px; background: rgba(23, 19, 43, .5); color: var(--cream); opacity: 0; transition: opacity .3s; }
-.heroes:hover + .heroes__hint, .heroes:focus-visible + .heroes__hint { opacity: 1; }
-/* depth: the name slides behind the heroes as the pointer moves */
-.hero__name { translate: calc(var(--px, 0) * -26px) calc(var(--py, 0) * -12px); transition: translate .6s var(--ease); }
-.hero__stage { translate: none; }
-@media (min-width: 1000px) and (orientation: landscape) { .hero__name { font-size: clamp(64px, min(15.5vw, 22vh), 250px); } }
-@media (max-width: 760px), (orientation: portrait) and (max-width: 1100px) {
-  .index a { margin-top: 0; padding: 10px 0; display: grid; grid-template-columns: 96px minmax(0, 1fr); column-gap: 14px; align-items: center; }
-  .index__thumb, .index li:nth-child(n) .index__thumb { grid-row: 1 / span 2; width: 96px; margin: 0; transform: rotate(-2deg); }
-  .index a b { align-self: end; } .index a span { align-self: start; text-align: left; }
-  .hero .heroes__hint { position: static; opacity: 1; background: none; padding: 0 4vw 0 0; }
-}
-@media (min-width: 761px) and (max-width: 999px) and (orientation: landscape) {
-  .index a { margin-top: 0; padding: 8px 12px 8px 0; display: grid; grid-template-columns: 84px minmax(0, 1fr); column-gap: 12px; align-items: center; min-height: 0; }
-  .index__thumb, .index li:nth-child(n) .index__thumb { grid-row: 1 / span 2; width: 84px; margin: 0; transform: rotate(-2deg); }
-  .index a b { align-self: end; } .index a span { align-self: start; }
-  .hero__name { font-size: clamp(56px, min(14vw, 20vh), 200px); }
-}
-
-/* A project as a scene, not a card: the screen runs large and off the sheet's edge, and the name crosses it at poster size */
-.sheet--scene { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(24px, 3vw, 48px); row-gap: 0; align-items: center; padding: clamp(32px, 4vw, 56px) clamp(22px, 3.4vw, 48px); overflow: visible; }
-.sheet--scene .sheet__media { grid-column: 1 / span 7; grid-row: 1; margin: 0; }
-.sheet--scene .cut--wide { transform: rotate(-1.2deg); }
-.sheet--scene .sheet__text { grid-column: 8 / -1; grid-row: 1; position: relative; z-index: 2; display: block; }
-.sheet--scene .sheet__text h3 { font-size: clamp(44px, 4.7vw, 84px); line-height: .88; letter-spacing: -.035em; text-wrap: balance; }
-.sheet--scene .sheet__text .lede { margin-top: clamp(16px, 1.8vw, 26px); }
-.sheet--scene .sheet__text .facts { margin-top: 12px; }
-.sheet--scene .play-desk { margin-top: clamp(18px, 2vw, 28px); }
-.sheet--scene .actions { margin-top: 0; }
-/* the keys and the full-game link belong to playing, not to the resting page */
-.sheet:not(.is-playing) .play-desk .keys, .sheet:not(.is-playing) .only-playing { display: none; }
-.sheet.is-playing .only-resting, .sheet.is-playing .pill--story { display: none; }
-.pill--story { background: transparent; }
-.i--in { transition: transform .3s var(--ease); }
-.pill--story:hover .i--in { transform: translateX(3px); }
-/* while it plays, the scene steps back into the plain playing layout */
-.sheet--scene.is-playing { grid-template-columns: 1fr; padding: 18px clamp(22px, 3.4vw, 48px) 20px; }
-.sheet--scene.is-playing .sheet__media { grid-column: 1; grid-row: auto; margin-left: 0; }
-.sheet--scene.is-playing .sheet__text { grid-column: 1; grid-row: auto; grid-template-columns: minmax(0, 1fr) auto; height: auto; row-gap: 0; pointer-events: auto; }
-.sheet--scene.is-playing .sheet__text h3 { grid-column: 1; font-size: clamp(22px, 2vw, 28px); line-height: 1; text-shadow: none; }
-.sheet--scene.is-playing .play-desk .keys { grid-column: 1; }
-/* the stickers are pressed onto the sheet once, when most of the scene is in view */
-@keyframes stick { from { transform: rotate(var(--from-r, -6deg)) translateY(-18px) scale(1.05); box-shadow: var(--shadow-up); } }
-.js .sheet--scene:not(.is-settled) .cut { animation: stick .7s var(--ease) both paused; }
-.js .sheet--scene.is-stuck:not(.is-settled) .cut { animation-play-state: running; }
-@media (max-width: 760px), (orientation: portrait) and (max-width: 1100px) {
-  .sheet--scene { grid-template-columns: 1fr; padding: 20px 18px 26px; }
-  .sheet--scene .sheet__media { grid-column: 1; grid-row: auto; margin: 0 0 6px; }
-    .sheet--scene .sheet__text { grid-column: 1; grid-row: auto; display: block; height: auto; }
-  .sheet--scene .sheet__text h3 { font-size: clamp(42px, 12vw, 84px); margin-top: 26px; }
-  .sheet--scene .sheet__text .lede { margin-top: 16px; }
-  .sheet--scene .sheet__text .facts { margin-top: 12px; }
-  .sheet--scene .actions { margin-top: 22px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero__name { translate: none; transition: none; }
-  .index__thumb, .i--in, .hero .heroes__hint { transition: none; }
-  .js .sheet--scene .cut { animation: none !important; }
-}
-/* the screen you were looking at carries you into its story, and back (only for people who have not asked for less motion) */
-@media (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } }
-#dungeon .cut--wide, .story__stage { view-transition-name: dungeon-stage; }
-::view-transition-old(dungeon-stage), ::view-transition-new(dungeon-stage) { height: 100%; object-fit: cover; object-position: center; }
-.foot__link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 6px; }
-
-/* ---- A project's story page ---- */
-.story-bar { position: sticky; top: 0; z-index: 15; display: flex; align-items: center; gap: 2px; height: 44px; padding: 0 calc(var(--gutter) - 10px); background: #251b2c; color: #f7efe3; }
-.story-bar a { display: inline-flex; align-items: center; gap: 6px; height: 44px; padding: 0 10px; font-size: 14px; font-weight: 500; text-decoration: none; color: #d4c6b6; white-space: nowrap; }
-.story-bar a:hover { color: #f7efe3; text-decoration: underline; text-underline-offset: 5px; }
-.story-bar a:first-child { margin-right: auto; color: #f7efe3; font-weight: 700; }
-.story-bar a:focus-visible { outline-color: #f7efe3; outline-offset: -3px; box-shadow: none; }
-.story-bar .i { transform: rotate(180deg); }
-.story { --sheet-soft: #d4c6b6; background: #251b2c; color: #f7efe3; }
-.story-bar a[aria-current="true"] { color: #f7efe3; font-weight: 700; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 5px; }
-.story__top { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: center; width: min(1280px, 100% - 2 * var(--m)); margin: 0 auto; padding: clamp(36px, 5vw, 76px) 0 clamp(56px, 7vw, 104px); }
-.story__top h1 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-variation-settings: "opsz" 96; font-size: clamp(52px, 8vw, 128px); line-height: .86; letter-spacing: -.035em; text-wrap: balance; }
-.story__top .lede { max-width: 30ch; font-size: clamp(19px, 1.7vw, 24px); margin-top: 22px; }
-.story__top .facts { margin-top: 14px; }
-.story .pill:not(.pill--go) { background: transparent; color: #f7efe3; border-color: rgba(247, 239, 227, .7); }
-.story .pill:not(.pill--go):hover { background: #f7efe3; color: #251b2c; }
-.story__stage { background: #f7efe3; transform: rotate(-1.6deg); }
-.story__stage::before { border-color: rgba(247, 239, 227, .42); }
-.story__body { background: var(--desk); color: var(--ink); }
-.story__section { width: min(1180px, 100% - 2 * var(--m)); margin: 0 auto; padding: clamp(56px, 8vw, 112px) 0 0; scroll-margin-top: 44px; }
-.story__section h2 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-variation-settings: "opsz" 96; font-size: clamp(34px, 5.4vw, 80px); line-height: .92; letter-spacing: -.03em; text-wrap: balance; max-width: 14ch; }
-.story__section p, .story__section li { text-wrap: pretty; }
-.story__section p { font-size: clamp(17px, 1.3vw, 19px); max-width: 58ch; }
-.story__section a { text-decoration-thickness: 1.5px; }
-.story__full { margin-top: clamp(24px, 3.4vw, 44px); transform: rotate(.7deg); }
-.story__full .cut, .story__trio .cut, .story__full { --sheet-cut: var(--liner-cut); }
-.story__cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(18px, 4vw, 56px); margin-top: clamp(24px, 3.4vw, 44px); align-items: start; }
-.story__cols ul { list-style: none; display: grid; gap: 10px; }
-.story__cols ul li { position: relative; padding-left: 20px; }
-.story__cols ul li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 8px; height: 8px; border-radius: 50%; background: var(--pink); }
-/* the three cameras, side by side as one set */
-.story__trio { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.6vw, 34px); margin-top: clamp(28px, 4vw, 52px); counter-reset: none; }
-.story__trio li { display: grid; gap: 6px; align-content: start; }
-.story__trio li:nth-child(1) .cut { transform: rotate(-1.4deg); }
-.story__trio li:nth-child(2) .cut { transform: rotate(.9deg) translateY(10px); }
-.story__trio li:nth-child(3) .cut { transform: rotate(-.6deg); }
-.story__trio .cut { margin-bottom: 18px; }
-.story__trio b { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-size: clamp(19px, 1.7vw, 24px); line-height: 1.1; }
-.story__trio span { color: var(--ink-soft); font-size: 15.5px; max-width: 34ch; }
-.story__aside { margin-top: clamp(20px, 3vw, 36px); color: var(--ink-soft); }
-.story__keys { margin-top: clamp(20px, 3vw, 36px); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(28px, 6vw, 96px); }
-.story__keys div { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 12px 0; border-bottom: 1.5px dashed var(--liner-cut); }
-.story__keys dt { font-weight: 700; white-space: nowrap; }
-.story__keys dd { color: var(--ink-soft); text-align: right; }
-.story__code { margin-top: 12px; padding: 14px 16px; border-radius: 12px; background: var(--ink); color: #f7efe3; font: 500 15px/1.6 ui-monospace, "SF Mono", Menlo, monospace; overflow-x: auto; }
-.story__end { width: min(1180px, 100% - 2 * var(--m)); margin: 0 auto; padding: clamp(56px, 8vw, 110px) 0 clamp(40px, 6vw, 72px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; }
-.story__end p { font-size: 14px; color: var(--ink-soft); max-width: 62ch; }
-@media (max-width: 760px), (orientation: portrait) and (max-width: 1100px) {
-  .story__top { grid-template-columns: 1fr; padding-top: 24px; }
-  .story__cols, .story__keys { grid-template-columns: 1fr; }
-  .story__trio { grid-template-columns: 1fr; gap: 30px; }
-  .story__trio li:nth-child(n) .cut { transform: rotate(-.8deg); }
-  .story-bar { padding: 0 6px; overflow-x: auto; scrollbar-width: none;  }
-}
-
-/* ================= Just for play: Light the hall ================= */
-.toys { width: min(1180px, 100% - 2 * var(--m)); margin: 0 auto; padding-top: clamp(56px, 8vw, 104px); scroll-margin-top: calc(var(--rail) + 16px); }
-.toys:focus { outline: none; box-shadow: none; }
-.pill[hidden] { display: none; }
-.toy { display: grid; grid-template-columns: 2fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
-.toy__text h3 { font-family: "Bricolage Grotesque", sans-serif; font-weight: 800; font-variation-settings: "opsz" 96; font-size: clamp(34px, 4vw, 56px); line-height: .95; letter-spacing: -.03em; }
-.toy__text .facts { color: var(--ink-soft); }
-/* the hall: one light, and everything answers to it */
-.torch { --lx: 50%; --ly: 38%; --sx: 0px; --sy: 14px; --r: 30%; --lit: 0; position: relative; aspect-ratio: 16 / 10; border-radius: 22px; overflow: hidden; background: #0f0a14; cursor: none; touch-action: none; isolation: isolate; box-shadow: 0 1px 2px rgba(0, 0, 0, .06), 0 24px 48px -32px rgba(23, 19, 43, .5); }
-.torch:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; box-shadow: 0 0 0 9px #fff; border-radius: 22px; }
-.torch__wall, .torch__floor { position: absolute; inset: 0; }
-.torch__wall { background:
-  radial-gradient(circle at var(--lx) var(--ly), rgba(255, 190, 110, .34), rgba(255, 150, 70, .1) 26%, transparent 46%),
-  radial-gradient(circle at 16% 20%, rgba(255, 180, 90, calc(.3 * var(--t1, 0))), transparent 30%),
-  radial-gradient(circle at 50% 12%, rgba(255, 180, 90, calc(.3 * var(--t2, 0))), transparent 30%),
-  radial-gradient(circle at 84% 20%, rgba(255, 180, 90, calc(.3 * var(--t3, 0))), transparent 30%),
-  linear-gradient(#1b1322, #0f0a14 62%); }
-.torch__floor { top: 62%; background: radial-gradient(ellipse 60% 120% at var(--lx) 0%, rgba(255, 170, 90, .22), transparent 70%), linear-gradient(#17101c, #0b070e); border-top: 1px solid rgba(255, 200, 140, .08); }
-.torch__heroes { position: absolute; left: 12%; right: 12%; bottom: 4%; aspect-ratio: 820 / 466; background: no-repeat 50% 50% / 300% 700%; }
-.torch__heroes--dark { filter: brightness(.16) saturate(.5) drop-shadow(var(--sx) var(--sy) 14px rgba(0, 0, 0, .75)); }
-.torch__heroes--lit { -webkit-mask-image: radial-gradient(circle at var(--hx, 50%) var(--hy, 30%), #000 0, rgba(0, 0, 0, .55) 34%, transparent 62%), linear-gradient(rgba(0, 0, 0, var(--lit)), rgba(0, 0, 0, var(--lit))); mask-image: radial-gradient(circle at var(--hx, 50%) var(--hy, 30%), #000 0, rgba(0, 0, 0, .55) 34%, transparent 62%), linear-gradient(rgba(0, 0, 0, var(--lit)), rgba(0, 0, 0, var(--lit))); }
-.torch.is-cheering .torch__heroes { background-image: none !important; }
-.torch__cheer { position: absolute; left: 12%; right: 12%; bottom: 4%; width: 76%; height: auto; }
-/* the flame you carry, and the three you can light */
-.torch__flame, .torch__sconce { position: absolute; width: 26px; height: 34px; margin: -30px 0 0 -13px; border-radius: 50% 50% 46% 46% / 62% 62% 38% 38%; background: radial-gradient(circle at 50% 70%, #fff3c4 0 18%, #ffc35b 36%, #ff8a3d 62%, rgba(255, 110, 40, 0) 74%); pointer-events: none; }
-.torch__flame { left: var(--lx); top: var(--ly); z-index: 3; }
-.torch__sconce { z-index: 2; opacity: .18; transition: opacity .5s var(--ease); }
-.torch__sconce.is-lit { opacity: 1; }
-@keyframes flicker { 0%, 100% { transform: scale(1) rotate(-2deg); } 35% { transform: scale(1.08, .94) rotate(2deg); } 70% { transform: scale(.95, 1.06) rotate(-1deg); } }
-.torch.is-held .torch__flame, .torch__sconce.is-lit { animation: flicker .9s ease-in-out infinite; }
-.torch__say { position: absolute; left: 16px; top: 14px; z-index: 4; padding: 6px 13px; border-radius: 18px; background: rgba(23, 19, 43, .86); color: #fff; font-size: 13.5px; font-weight: 700; line-height: 1.3; pointer-events: none; }
-.torch__say:empty { display: none; }
-@media (max-width: 760px), (orientation: portrait) and (max-width: 1100px) { .toy { grid-template-columns: 1fr; } }
-@media (prefers-reduced-motion: reduce) { .torch.is-held .torch__flame, .torch__sconce.is-lit { animation: none; } .torch__sconce { transition: none; } }
-/* with the real models on stage, the pictures and painted light step aside */
-.torch__gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; z-index: 1; }
-.torch.is-3d .torch__heroes, .torch.is-3d .torch__wall, .torch.is-3d .torch__floor, .torch.is-3d .torch__cheer { display: none; }
-.torch.is-3d .torch__sconce { z-index: 2; }
-
-/* short laptop windows: the name and the stickers give up a little height so the whole opening still fits */
-@media (min-width: 1000px) and (orientation: landscape) and (max-height: 700px) {
-  .hero__name { font-size: clamp(64px, min(15.5vw, 18vh), 250px); }
-  .index__thumb { width: clamp(96px, min(13.2vw, 17vh), 208px); }
-  .hero__intro { padding-bottom: calc(2vh + 36px); }
-}
-@media (min-width: 761px) and (max-width: 999px) and (orientation: landscape) {
-  .hero__name { font-size: clamp(56px, min(14vw, 14.5vh), 200px); }
-  .hero__intro { padding: 2vh 0 2.5vh; }
-}
-.desk__nav a { white-space: nowrap; }
-@media (max-width: 360px) { .desk__nav a { padding: 0 6px; font-size: 13.5px; } }
-
-/* round after the slice review */
-/* the focus ring stays inside its own sticker and inside the first screen */
-.index a:focus-visible { outline-offset: -5px; border-radius: 14px; }
-/* touch: the first button shows the game rather than playing it, so it carries no play mark */
-/* reduced motion: the heroes stand still, so they are a picture, not a button */
-.heroes.is-still { cursor: default; }
-@media (min-width: 1000px) and (orientation: landscape) and (max-height: 700px) {
-  .hero__name { font-size: clamp(64px, min(15.5vw, 17vh), 250px); }
-  .index a { margin-top: -8px; }
-  .hero__intro { padding-bottom: calc(2vh + 40px); max-width: 44rem; }
-}
-.sheet--scene:not(.is-playing) .cut--wide > .live__note { top: auto; bottom: -15px; left: 24px; }
-/* touch: the heroes' caption is not needed on a phone */
-.can-touch .hero .heroes__hint { display: none; }
-.story__cols > :only-child { grid-column: 1 / -1; max-width: 62ch; }
-@media (min-width: 761px) and (max-width: 1180px) and (orientation: landscape) { .sheet--scene .sheet__media { grid-column: 1 / span 6; } .sheet--scene .sheet__text { grid-column: 7 / -1; } }
-/* the focus ring around a sticker keeps clear of its label */
-@media (min-width: 1000px) and (orientation: landscape), (min-width: 1101px) { .index a { padding-left: 10px; margin-left: -10px; } }
-
-/* fewer words: the game window is the game plus two icon buttons; loading is a spinner */
-.pill--icon { width: 44px; height: 44px; min-height: 44px; padding: 0; justify-content: center; }
-.pill--icon .i { margin: 0; }
-.screen__loading.is-spinning::before { content: ""; width: 34px; height: 34px; border-radius: 50%; border: 3px solid rgba(247, 239, 227, .25); border-top-color: var(--cream); animation: spin .9s linear infinite; }
-.cut--wide.is-waking::after { content: ""; position: absolute; z-index: 3; left: 50%; top: 50%; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; border: 3px solid rgba(247, 239, 227, .3); border-top-color: var(--cream); animation: spin .9s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) { .screen__loading.is-spinning::before, .cut--wide.is-waking::after { animation-duration: 2.4s; } }
-.out-link { display: inline-flex; align-items: center; gap: 6px; color: inherit; font-weight: 700; }
-
-/* ===== Playing, the way game sites do it (research, 2026-11-16): a play mark on the screenshot, no instructions,
-   a spinner while loading, icon buttons with tooltips while playing ===== */
-.poster-play { position: absolute; z-index: 2; left: 50%; top: 50%; translate: -50% -50%; display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px 14px 22px; border-radius: 999px; background: var(--pink); color: var(--ink); font-weight: 800; font-size: 19px; text-decoration: none; box-shadow: 0 10px 30px rgba(10, 6, 20, .45); transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
-.poster-play .i { width: 22px; height: 22px; }
-.poster-play:hover, .poster-play:focus-visible { transform: scale(1.06); box-shadow: 0 14px 38px rgba(10, 6, 20, .55); }
-.sheet.is-playing .poster-play { display: none; }
-/* at rest, the play mark on the screenshot is the Play button; the pill only appears as Stop while playing */
-.sheet.is-playing .play-desk .actions { gap: 8px; }
-.live__tip { left: 50%; top: 14px; translate: -50% 0; animation: tip 3.2s var(--ease) both; }
-@keyframes tip { 0%, 80% { opacity: 1; } 100% { opacity: 0; } }
-.phone-note { font-weight: 700; margin-bottom: 12px; }
-/* the window: one round close at the top right, the game large */
-.screen__bar { justify-content: flex-end; }
-@media (prefers-reduced-motion: reduce) { .poster-play { transition: none; } .live__tip { animation: none; } }
-.live__note:empty { display: none; }
-.sheet.is-playing .play-desk .actions [data-play] { order: 3; }
-
-/* ===== pre-publish check fixes ===== */
-.story-bar.has-more { -webkit-mask-image: linear-gradient(90deg, #000 86%, transparent); mask-image: linear-gradient(90deg, #000 86%, transparent); }
-/* credits page */
-.credits { width: min(1180px, 100% - 2 * var(--m)); margin: 0 auto; padding: clamp(32px, 6vw, 72px) 0 48px; }
-.credits > p:first-child a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; }
-.credits dl { margin-top: 18px; }
-.credits dt { font-weight: 700; margin-top: 22px; }
-.credits dd { margin: 4px 0 0; max-width: 62ch; color: var(--ink-soft); }
-/* a slow or failed game's words sit over the bottom of the window, above the game */
-.screen__loading:not(.is-spinning) { z-index: 1; inset: auto 0 0 0; background: rgba(0, 0, 0, .78); padding: 12px 16px; }
-/* TCSS 490 tags on the narrowest phones: the badge drops onto its own line inside the tag */
-@media (max-width: 400px) { .artifact__meta { flex-wrap: wrap; row-gap: 4px; border-radius: 14px; } }
-/* footer: both sides on one baseline */
-.foot { align-items: baseline; }
-.foot__link { display: inline-block; min-height: 0; padding: 13px 6px; margin: -13px -6px; }
-.phone-note { margin: 18px 0 12px; }
